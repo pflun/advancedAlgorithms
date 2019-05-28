@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div>Begin</div>
+
+  <ul>
+    <li>
+      <b class = "test">Information</b>
+    </li>
+  </ul>
+
+    <div class = "test">End</div>
+
+</body>
+
+<script>
+var getElementsByClassName = function(className) {
+  var docBody = document.body;
+  var classes = [];
+
+  var walk = function (node, func) {
+    func(node);
+    node = node.firstChild;
+    while (node) {
+      walk(node, func);
+      node = node.nextSibling;
+    }
+  }
+
+  walk(docBody, function(node) {
+    if (node.classList && node.classList.contains(className)) {
+      classes.push(node)
+    }
+  });
+
+  return classes;
+};
+
+console.log(getElementsByClassName('test'));
+</script>
+
+</html>
