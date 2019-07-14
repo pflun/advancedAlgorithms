@@ -10,7 +10,7 @@ class Solution(object):
         for i in range(2, len(nums)):
             res[i] = max(nums[i] + res[i - 2], res[i - 1])
 
-        return res[-1]
+        return res[-1], res
 
 test = Solution()
 print test.rob([2, 1, 1, 3, 2])

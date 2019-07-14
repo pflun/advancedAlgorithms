@@ -22,5 +22,13 @@ class Solution(object):
             res += v
         return res
 
+    def findReplaceString2(self, S, indexes, sources, targets):
+        offset = 0
+        for i in range(len(indexes)):
+            if S[indexes[i] + offset:indexes[i] + offset + len(sources[i])] == sources[i]:
+                S = S[:indexes[i] + offset] + targets[i] + S[indexes[i] + offset + len(sources[i]):]
+                offset += len(targets[i]) - len(sources[i])
+        return S
+
 test = Solution()
-print test.findReplaceString("abcd", [0,2], ["a","cd"], ["eee","ffff"])
+print test.findReplaceString2("abcd", [0,2], ["a","cd"], ["eee","ffff"])

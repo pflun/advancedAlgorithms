@@ -36,3 +36,24 @@ class Solution(object):
 test = Solution()
 print test.addStrings("125", "45")
 print test.helper([1,3,7,9,10])
+print sorted(['/home/joe', '/application', '/home/joe/music/baba'])
+print int('10', 16)
+
+# add dict as value in a dict
+dicP = {}
+dicC = {'a': 57}
+dicP['A'] = dicC
+print dicP['A']['a']
+
+def getOnes(n):
+    binary = bin(n)
+    cnt = 0
+    for b in str(binary):
+        if b == "1":
+            cnt += 1
+    return cnt
+
+mylist = [100,1,2,3,4,5]
+
+mylist.sort(key=lambda x: getOnes(x))
+print mylist

@@ -1,3 +1,4 @@
+# https://www.cnblogs.com/grandyang/p/6209746.html
 class Solution(object):
     def findDuplicates(self, nums):
         # Hash, with extra space

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 作弊：random.shuffle(list)
-
+# Reservoir Sampling
 import random
 class Solution(object):
     def __init__(self, nums):

@@ -1,5 +1,6 @@
+# https://www.youtube.com/watch?v=seQnf-5hlBo
+# below is brutal force, solution 2 is binary search
 class MyCalendar(object):
-
     def __init__(self):
         self.books = []
 

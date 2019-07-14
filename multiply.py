@@ -25,5 +25,25 @@ class Solution(object):
 
         return str(res)
 
+    def multiply2(self, num1, num2):
+        res = 0
+        pos = 1
+
+        def helper(num1, n):
+            res = 0
+            pos = 1
+            for n1 in num1[::-1]:
+                tmp = int(n1) * int(n)
+                res += tmp * pos
+                pos *= 10
+            return res
+
+        for n in num2[::-1]:
+            tmp = helper(num1, n)
+            res += tmp * pos
+            pos *= 10
+
+        return str(res)
+
 test = Solution()
-print test.multiply('234', '23')
+print test.multiply2('234', '23')
