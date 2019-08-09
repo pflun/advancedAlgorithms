@@ -12,7 +12,7 @@ class Solution(object):
         while queue:
             size = len(queue)
             for _ in range(size):
-                pos, speed = queue.pop()
+                pos, speed = queue.pop(0)
                 # 加速
                 posA = pos + speed
                 speedA = speed * 2

@@ -22,4 +22,4 @@ class Solution(object):
         return res
 
 test = Solution()
-print test.maxArea([2,3,5,3,6,4])
+print test.maxArea([1,8,6,2,5,4,8,3,7])

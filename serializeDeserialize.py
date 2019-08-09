@@ -43,6 +43,20 @@ class Codec:
         node.right = self.helper(vals)
         return node
 
+    def deserialize2(self, data):
+        self.data = data
+        def helper():
+            if self.data[0] == '#':
+                self.data.pop(0)
+                return None
+            node = TreeNode(self.data[0])
+            self.data.pop(0)
+            node.left = helper()
+            node.right = helper()
+            return node
+
+        return helper()
+
 
 head_node = TreeNode(0)
 n1 = TreeNode(1)
@@ -60,7 +74,7 @@ n5.right = n6
 
 codec = Codec()
 print codec.serialize(head_node)
-print codec.deserialize(codec.serialize(head_node)).left.right.right
+print codec.deserialize2(codec.serialize(head_node)).left.right.right
 
 #     0
 #   1   2

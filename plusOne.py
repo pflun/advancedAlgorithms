@@ -12,6 +12,19 @@ class Solution:
             digits = [1] + digits
         print digits
 
-test = Solution()
+    def plusOne2(self, digits):
+        carry, curr = divmod(digits[-1] + 1, 10)
+        digits[-1] = curr
+        pos = len(digits) - 2
+        while carry == 1 and pos >= 0:
+            carry, curr = divmod(digits[pos] + carry, 10)
+            digits[pos] = curr
+            pos -= 1
 
+        if carry == 1:
+            digits = [1] + digits
+        return digits
+
+
+test = Solution()
 test.plusOne([9, 2, 2])

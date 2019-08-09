@@ -29,11 +29,32 @@ class Solution1(object):
 
         return self.res
 
+    # Iteration
+    def closetValue2(self, root, target):
+        while root:
+            if root.val == target:
+                return root.val
+            if target < root.val:
+                if root.left:
+                    self.prev = root
+                    root = root.left
+                else:
+                    break
+            elif target > root.val:
+                if root.right:
+                    self.prev = root
+                    root = root.right
+                else:
+                    break
+        if abs(root.val - target) > abs(self.prev.val - target):
+            return self.prev.val
+        else:
+            return root.val
 
 test = Solution()
 head_node = test.sortedArrayToBST([1, 2, 3, 4, 6, 9, 20])
 test1 = Solution1()
-print test1.closetValue(head_node, 10)
+print test1.closetValue2(head_node, 10)
 
 #    4
 #  2   9

@@ -36,5 +36,48 @@ class Solution(object):
 
         return res
 
+    def calculate2(self, s):
+        stack = []
+        for c in s:
+            if c == ")":
+                curr = ""
+                while stack and stack[-1] != "(":
+                    curr = stack.pop() + curr
+                # pop (
+                stack.pop()
+                value = self.getSubVal(curr)
+                stack.append(value)
+                continue
+            if c != " ":
+                stack.append(c)
+        if len(stack) == 1:
+            return int(stack[0])
+        else:
+            curr = ""
+            while stack and stack[-1] != "(":
+                curr = stack.pop() + curr
+            return self.getSubVal(curr)
+
+    def getSubVal(self, curr):
+        res = 0
+        i = 0
+        currVal = ""
+        currOp = 1
+        while i < len(curr):
+            if curr[i].isdigit():
+                currVal += curr[i]
+            else:
+                res += int(currVal) * currOp
+                currVal = ""
+                if curr[i] == "-":
+                    currOp = -1
+                elif curr[i] == "+":
+                    currOp = 1
+            i += 1
+        if len(currVal) != 0:
+            res += int(currVal) * currOp
+        return str(res)
+
 test = Solution()
 print test.calculate('(1+(4+5+2 + (1 + 1))-3)+(6+8 + 1)')
+print test.calculate2('(2+3) -4')

@@ -57,3 +57,4 @@ mylist = [100,1,2,3,4,5]
 
 mylist.sort(key=lambda x: getOnes(x))
 print mylist
+print 65535/1000, 65535%1000, 65535%1000/1000
