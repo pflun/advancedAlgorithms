@@ -11,7 +11,7 @@ class Solution(object):
             for _ in range(size):
                 curr = queue.pop()
                 for d in dir:
-                    curry= curr[0] + d[0]
+                    curry = curr[0] + d[0]
                     currx = curr[1] + d[1]
                     if curry < 0 or currx < 0 or curry > len(matrix) - 1 or currx > len(matrix[0]) - 1 or (curry, currx) in visited or matrix[curry][currx] == 1: # use 1 as blocker
                         continue

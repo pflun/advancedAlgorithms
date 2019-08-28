@@ -12,8 +12,8 @@ class LRUCache(object):
         self.capacity = capacity
         self.head = LinkedNode(None, 'head')
         self.tail = LinkedNode(None, 'tail')
-        self.head.next = self.tail  # tail being most recent
-        self.tail.prev = self.head  # head being oldest
+        self.head.next = self.tail  # head.next being oldest
+        self.tail.prev = self.head  # tail.next being most recent
         self.data = {}
 
     def deleteNode(self, node):

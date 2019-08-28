@@ -31,5 +31,29 @@ class Solution(object):
 
         return res
 
+    def longestMountain2(self, A):
+        up = [0]
+        down = [0]
+        tmpUp = 0
+        tmpDown = 0
+        res = 0
+        for i in range(len(A) - 1):
+            if A[i + 1] >= A[i]:
+                tmpUp += 1
+            else:
+                tmpUp = 0
+            up.append(tmpUp)
+
+        for i in range(len(A) - 1, 0, -1):
+            if A[i] <= A[i - 1]:
+                tmpDown += 1
+            else:
+                tmpDown = 0
+            down = [tmpDown] + down
+
+        for i in range(len(A) - 1):
+            res = max(res, up[i] + down[i])
+        return res + 1
+
 test1 = Solution()
-print test1.longestMountain([1, 2, 3, 2, 1, 3, 1])
+print test1.longestMountain2([1, 2, 3, 2, 1, 3, 1])

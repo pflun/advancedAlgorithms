@@ -26,4 +26,4 @@ class Solution:
         return dp[-1]
 
 test = Solution()
-print test.jump([2,3,1,1,4])
+print test.jump2([2,3,1,1,4])
