@@ -26,7 +26,7 @@ class Solution(object):
                 tmp.pop()
                 visited.remove(curr)
 
-        dfs(start, end, visited, ['Bart'], dict)
+        dfs(start, end, visited, [start], dict)
         for r in self.r:
             self.res.append(' '.join(r))
         return self.res

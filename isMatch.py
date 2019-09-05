@@ -42,3 +42,19 @@ class Solution(object):
                         table[i][j] |= table[i][j - 1]
 
         return table[-1][-1]
+
+    # bug
+    def isMatch2(self, s, p):
+        def dfs(s, p, i, j):
+            if i == len(s) or j == len(p):
+                return False
+            if i == len(s) - 1 and j == len(p) - 1 and s[i] == p[j]:
+                return True
+            if s[i] == p[j] or p[j] == '.':
+                dfs(s, p, i + 1, j + 1)
+            elif p[j] == '*' and p[j - 1] == s[i]:
+                dfs(s, p, i + 1, j)
+            else:
+                return False
+
+        return dfs(s, p, 0, 0)
