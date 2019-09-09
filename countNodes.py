@@ -46,6 +46,30 @@ class Solution1(object):
             dic[level] = [root.val]
         self.inorder(root.right, dic, level + 1)
 
+    def countNodes2(self, root):
+        def getRightDepth(node, depth):
+            if not node.left and not node.right:
+                return depth
+            getRightDepth(node.right, depth + 1)
+
+        def getLeftDepth(node, depth):
+            if not node.left and not node.right:
+                return depth
+            getLeftDepth(node.left, depth + 1)
+
+        right = getRightDepth(root, 1)
+        left = getLeftDepth(root, 1)
+
+        res = 0
+        curr = 1
+        if left == right:
+            for _ in range(left):
+                res += curr
+                curr *= 2
+            return res
+        else:
+            return 1 + self.countNodes2(root) + self.countNodes2(root)
+
 
 test = Solution()
 head_node = test.sortedArrayToBST([0, 1, 2, 3, 4, 5, 6, 7])

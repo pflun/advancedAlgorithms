@@ -16,5 +16,21 @@ class Solution(object):
         # case: apple vs app
         return True if i == len(w1) else False
 
+    # bug on apple vs app
+    def isAlienSorted2(self, words, order):
+        for i in range(len(words) - 1):
+            w1 = words[i]
+            w2 = words[i + 1]
+            j = 0
+            while j < len(w1) and j < len(w2):
+                if order.find(w1[j]) > order.find(w2[j]):
+                    return False
+                elif order.find(w1[j]) == order.find(w2[j]):
+                    j += 1
+                    continue
+                else:
+                    break
+        return True
+
 test = Solution()
-print test.isAlienSorted(["apple","app"], "abcdefghijklmnopqrstuvwxyz")
+print test.isAlienSorted2(["apple","app"], "abcdefghijklmnopqrstuvwxyz")
