@@ -1,3 +1,4 @@
+from collections import OrderedDict
 class Solution(object):
     def addStrings(self, num1, num2):
         res = 0
@@ -58,3 +59,11 @@ mylist = [100,1,2,3,4,5]
 mylist.sort(key=lambda x: getOnes(x))
 print mylist
 print 65535/1000, 65535%1000, 65535%1000/1000
+
+ordDic = OrderedDict()
+ordDic[2] = 2
+ordDic[5] = 5
+ordDic[3] = 3
+ordDic[1] = 1
+for k in ordDic.keys():
+    print k
