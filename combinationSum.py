@@ -21,6 +21,25 @@ class Solution(object):
 
         return res
 
+    def combinationSum2(self, candidates, target):
+        self.res = []
+
+        def dfs(candidates, idx, tmp, value, target):
+            if value > target:
+                return
+            if value == target:
+                self.res.append(tmp[:])
+
+            for i in range(idx, len(candidates)):
+                tmp.append(candidates[i])
+                value += candidates[i]
+                dfs(candidates, i, tmp, value, target)
+                tmp.pop()
+                value -= candidates[i]
+
+        dfs(candidates, 0, [], 0, target)
+        return self.res
+
 
 test = Solution()
 print test.combinationSum([2, 3, 6, 7], 7)
