@@ -7,6 +7,22 @@ class TreeNode(object):
         self.right = None
 
 class Solution(object):
+    def diameterOfBinaryTree2(self, root):
+        if not root:
+            return 0
+        self.res = 0
+
+        def helper(node):
+            if not node:
+                return 0
+            left = helper(node.left)
+            right = helper(node.right)
+            self.res = max(self.res, left + right + 1)
+            return max(left, right) + 1
+
+        helper(root)
+        return self.res - 1
+
     def diameterOfBinaryTree(self, root):
         if not root or not root.left and not root.right:
             return 0

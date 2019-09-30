@@ -1,5 +1,18 @@
 # -*- coding: utf-8 -*-
+# 用哈希表来建立nums1中字符和其出现个数之间的映射, 然后遍历nums2数组，
+# 如果当前字符在哈希表中的个数大于0，则将此字符加入结果res中，然后哈希表的对应值自减1
 class Solution(object):
+    def intersectHashmap(self, nums1, nums2):
+        res = []
+        dic = {}
+        for n in nums1:
+            dic[n] = dic.get(n, 0) + 1
+        for n in nums2:
+            if n in dic and dic[n] > 0:
+                res.append(n)
+                dic[n] -= 1
+        return res
+
     def intersect(self, nums1, nums2):
         res = []
         for i in range(len(nums1)):

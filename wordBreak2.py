@@ -38,7 +38,7 @@ class Solution(object):
 
 
             self.mem[s] = False
-            print self.mem.items()
+            # print self.mem.items()
             return False
 
         helper(s, wordDict)
@@ -51,11 +51,6 @@ print test.wordBreak2('catsanddog', ["cat", "cats", "and", "sand", "dog"])
 
 class Solution2(object):
     def wordBreak(self, s, wordDict):
-        """
-        :type s: str
-        :type wordDict: Set[str]
-        :rtype: List[str]
-        """
         return self.helper(s, wordDict, {})
 
     def helper(self, s, wordDict, memo):

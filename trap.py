@@ -1,6 +1,27 @@
 # -*- coding: utf-8 -*-
 # 对任意位置上的积水，不包括i本身, 由左右两边最高的bar决定
 class Solution(object):
+    def trap2(self, height):
+        if len(height) < 2:
+            return 0
+        res = 0
+        l = 0
+        r = len(height) - 1
+        leftMax = height[0]
+        rightMax = height[-1]
+        while l < r:
+            if leftMax <= rightMax:
+                if l < len(height) and height[l] < leftMax:
+                    res += leftMax - height[l]
+                l += 1
+                leftMax = max(leftMax, height[l])
+            else:
+                if r > 0 and height[r] < rightMax:
+                    res += rightMax - height[r]
+                r -= 1
+                rightMax = max(rightMax, height[r])
+        return res
+
     def trap(self, height):
         if len(height) < 2:
             return 0

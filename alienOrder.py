@@ -1,5 +1,55 @@
 # BFS Topological sort
+# https://www.youtube.com/watch?v=hWnvHiaXTsw
 class Solution(object):
+    def alienOrder2(self, words):
+        # dic => set()
+        self.graph = {}
+        self.indegree = {}
+        self.buildGraph(words)
+        return self.bfs()
+
+    def buildGraph(self, words):
+        # build empty graph
+        for w in words:
+            for c in w:
+                if c not in self.graph:
+                    self.graph[c] = set()
+                if c not in self.indegree:
+                    self.indegree[c] = 0
+        # fill graph, and add in indegree
+        for i in range(1, len(words)):
+            first = words[i - 1]
+            second = words[i]
+            j = 0
+            while j < len(first) and j < len(second):
+                if first[j] != second[j]:
+                    if second[j] not in self.graph[first[j]]:
+                        self.graph[first[j]].add(second[j])
+                        self.indegree[second[j]] = self.indegree.get(second[j], 0) + 1
+                    break
+                j += 1
+
+    def bfs(self):
+        res = ''
+        queue = []
+        for k, v in self.indegree.items():
+            if v == 0:
+                res += k
+                queue.append(k)
+
+        while queue:
+            curr = queue.pop(0)
+            for next in self.graph[curr]:
+                self.indegree[next] -= 1
+                if self.indegree[next] == 0:
+                    queue.append(next)
+                    res += next
+        # any(indegree)
+        for v in self.indegree.values():
+            if v != 0:
+                return ''
+        return res
+
     def alienOrder(self, words):
         result, zero_in_degree_queue, in_degree, out_degree = [], [], {}, {}
         nodes = set()
@@ -50,7 +100,7 @@ class Solution(object):
 
 
 test = Solution()
-print test.alienOrder([
+print test.alienOrder2([
   "wrt",
   "wrf",
   "er",
