@@ -1,3 +1,4 @@
+# Task Scheduler
 # Greedy, https://www.youtube.com/watch?v=YCD_iYxyXoo
 # ans = (maxfaq - 1) * (n + 1) + p, p is how many elements that faq == A (assume A has highest faq)
 # tasks = ["A","A","A","B","B","B"], n = 2 ==> (3 - 1) * (2 + 1) + 2 = 8
