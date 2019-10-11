@@ -51,6 +51,20 @@ class Solution1(object):
         else:
             return root.val
 
+    def closetValue3(self, root, target):
+        res = float('inf')
+        node = root
+        while node:
+            if node.val == target:
+                return node.val
+            if abs(target - node.val) < abs(res - target):
+                res = node.val
+            if node.val > target:
+                node = node.left
+            elif node.val < target:
+                node = node.right
+        return res
+
 test = Solution()
 head_node = test.sortedArrayToBST([1, 2, 3, 4, 6, 9, 20])
 test1 = Solution1()

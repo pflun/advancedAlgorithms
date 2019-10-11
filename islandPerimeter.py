@@ -1,4 +1,28 @@
 class Solution(object):
+    def islandPerimeter2(self, grid):
+        if len(grid) == 0:
+            return 0
+        island = 0
+        edge = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == 1:
+                    island += 1
+                    edge += self.neighbor(grid, i, j)
+        return island * 4 - edge
+
+    def neighbor(self, grid, i, j):
+        cnt = 0
+        dir = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+        for d in dir:
+            x = i + d[0]
+            y = j + d[1]
+            if x < 0 or x == len(grid) or y < 0 or y == len(grid[0]):
+                continue
+            if grid[x][y] == 1:
+                cnt += 1
+        return cnt
+
     def islandPerimeter(self, grid):
         res = 0
         island = 0

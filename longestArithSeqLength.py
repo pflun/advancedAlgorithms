@@ -1,3 +1,4 @@
+# DP: https://leetcode.com/problems/longest-arithmetic-sequence/discuss/274611/JavaC%2B%2BPython-DP
 class Solution(object):
     # brutal force
     def longestArithSeqLength(self, A):
@@ -19,5 +20,26 @@ class Solution(object):
 
         return self.res
 
+    # TLE
+    def longestArithSeqLength2(self, A):
+        res = 2
+        for i in range(len(A)):
+            first = A[i]
+            for j in range(i + 1, len(A)):
+                second = A[j]
+                diff = first - second
+                tmpLen = 2
+                idx = j + 1
+                while idx < len(A) and idx != -1:
+                    try:
+                        idx = A[idx:].index(second - diff)
+                    except ValueError:
+                        idx = -1
+                    second = second - diff
+                    if idx != -1:
+                        tmpLen += 1
+                        res = max(res, tmpLen)
+        return res
+
 test = Solution()
-print test.longestArithSeqLength([9,4,7,2,10])
+print test.longestArithSeqLength2([9,4,7,2,10])

@@ -17,3 +17,6 @@ class Solution(object):
             res = max(res, right - left + 1)
             right += 1
         return res
+
+test = Solution()
+print test.longestOnes([1,1,1,0,0,0,1,1,1,1,0], 2)

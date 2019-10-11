@@ -67,3 +67,13 @@ ordDic[3] = 3
 ordDic[1] = 1
 for k in ordDic.keys():
     print k
+import numpy
+mtx = numpy.array([
+  [1, 3, 5, 7],
+  [10, 11, 16, 0],
+  [23, 0, 34, 0],
+  [51, 52, 54, 40]
+])
+print mtx[:2, :2]
+A = [100,1,2,3,4,5]
+print A.index(9)

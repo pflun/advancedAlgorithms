@@ -5,26 +5,12 @@ class Solution(object):
     def __init__(self):
         self.dic = {}
 
-    # def build(self, child, parent):
-    #     self.dic[child] = parent
-    #     # dic[老大哥] = 老大哥
-    #     if parent not in self.dic:
-    #         self.dic[parent] = parent
-
     # O(n) 返回老大哥
     def find(self, x):
         parent = self.dic[x]
         while parent != self.dic[parent]:
             parent = self.dic[parent]
         return parent
-
-    # def union(self, x, y):
-    #     rootx = self.find(x)
-    #     rooty = self.find(y)
-    #     if rootx == rooty:
-    #         return False
-    #     self.dic[rootx] = rooty
-    #     return True
 
     def findRedundantConnection(self, edges):
         for e in edges:
