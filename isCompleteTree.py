@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -6,7 +7,22 @@ class TreeNode(object):
 
 # bug on case: [1,2,3,4,5,null,7], BFS is actually simpler
 class Solution(object):
+    # BFS, 无脑加入queue，中间任何pop出来是None，就证明不仅这一行往后有node，而且下面如果有行，都是False
     def isCompleteTree(self, root):
+        end = False
+        queue = [root]
+        while queue:
+            curr = queue.pop(0)
+            if not curr:
+                end = True
+            else:
+                if end:
+                    return False
+                queue.append(curr.left)
+                queue.append(curr.right)
+        return True
+
+    def isCompleteTreeDFS(self, root):
         self.level = 0
         self.flag = False
 

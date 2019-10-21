@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# BFS相对好写，DFS就是比如curr < L，就dfs(curr.right)因为curr.right could be possible
 from sortedArrayToBST import Solution
 class TreeNode(object):
     def __init__(self, x):
@@ -7,7 +8,25 @@ class TreeNode(object):
         self.right = None
 
 class Solution1(object):
+    # BFS
     def rangeSumBST(self, root, L, R):
+        queue = [root]
+        res = 0
+        while queue:
+            curr = queue.pop(0)
+            if not curr:
+                continue
+            # left child could be possible
+            if curr.val > L:
+                queue.append(curr.left)
+            # right child could be possible
+            if curr.val < R:
+                queue.append(curr.right)
+            if curr.val >= L and curr.val <= R:
+                res += curr.val
+        return res
+
+    def rangeSumBSTBrutalForce(self, root, L, R):
         self.res = 0
 
         def dfs(node, L, R):

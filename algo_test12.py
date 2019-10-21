@@ -75,5 +75,6 @@ mtx = numpy.array([
   [51, 52, 54, 40]
 ])
 print mtx[:2, :2]
-A = [100,1,2,3,4,5]
-print A.index(9)
+dp = {}
+dp[1, 2] = '12'
+print dp.get(1, 2)

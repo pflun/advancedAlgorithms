@@ -12,7 +12,7 @@ class TicTacToe(object):
         # 最终胜利需要某一行一列达到N
         self.N = n
 
-    def move(self, row ,col, player):
+    def move(self, row, col, player):
         if player == 1:
             add = 1
         else:
