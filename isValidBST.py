@@ -8,6 +8,25 @@ from sortedArrayToBST import Solution
 #         self.right = None
 
 class Solution1(object):
+    def isValidBST3(self, root):
+        if not root:
+            return True
+
+        self.res = True
+        self.prev = float('-inf')
+
+        def inorder(node):
+            if node.left:
+                inorder(node.left)
+            if self.prev > node.val:
+                self.res = False
+                return
+            self.prev = node.val
+            if node.right:
+                inorder(node.right)
+
+        return self.res
+
     def isValidBST(self, root):
         res = self.inorderTraversal(root)
 

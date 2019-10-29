@@ -6,6 +6,19 @@ class TreeNode(object):
         self.right = None
 
 class Solution(object):
+    def buildTree2(self, preorder, inorder):
+        if len(preorder) == 0:
+            return None
+        curr = TreeNode(preorder[0])
+        idx = inorder.index(preorder[0])
+        inorderLeft = inorder[:idx]
+        inorderRight = inorder[idx + 1:]
+        preorderLeft = preorder[1:len(inorderLeft) + 1]
+        preorderRight = preorder[len(inorderLeft) + 1:]
+        curr.left = self.buildTree(preorderLeft, inorderLeft)
+        curr.right = self.buildTree(preorderRight, inorderRight)
+        return curr
+
     def buildTree(self, preorder, inorder):
         if len(preorder) == 0 or len(inorder) == 0 or len(preorder) != len(inorder):
             return []

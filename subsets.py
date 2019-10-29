@@ -3,6 +3,22 @@
 # correct output but need to be careful about the order in output
 # O(n * 2^n)
 class Solution:
+    def subsets2(self, nums):
+        self.res = []
+
+        def dfs(nums, tmp, used, idx):
+            self.res.append(tmp[:])
+            for i in range(idx, len(nums)):
+                if nums[i] not in used:
+                    tmp.append(nums[i])
+                    used.add(nums[i])
+                    dfs(nums, tmp, used, idx + 1)
+                    tmp.pop()
+                    used.remove(nums[i])
+
+        dfs(nums, [], set(), 0)
+        return self.res
+
     def subsets(self, nums):
         self.res = []
         self.used = [False] * len(nums)
@@ -27,4 +43,4 @@ class Solution:
 
 
 test = Solution()
-print test.subsets([1,2,3])
+print test.subsets2([1,2,3])

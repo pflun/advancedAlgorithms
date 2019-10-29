@@ -8,6 +8,23 @@ class TreeNode(object):
         self.right = None
 
 class Solution1(object):
+    def rightSideView2(self, root):
+        if not root:
+            return []
+        res = []
+        queue = [root]
+        while queue:
+            size = len(queue)
+            for i in range(size):
+                curr = queue.pop(0)
+                if i == size - 1:
+                    res.append(curr.val)
+                if curr.left:
+                    queue.append(curr.left)
+                if curr.right:
+                    queue.append(curr.right)
+        return res
+
     def rightSideView(self, root):
         if root is None:
             return []

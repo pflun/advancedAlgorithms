@@ -1,5 +1,24 @@
 # Below code works but not for Closed  intervals, need debug in else condition
 class Solution(object):
+    def intervalIntersection2(self, A, B):
+        res = []
+        p1 = 0
+        p2 = 0
+        while p1 < len(A) and p2 < len(B):
+            start = max(A[p1][0], B[p2][0])
+            end = min(A[p1][1], B[p2][1])
+
+            # found overlap
+            if end >= start:
+                res.append([start, end])
+
+            # move pointer with smaller end
+            if A[p1][1] == end:
+                p1 += 1
+            if B[p2][1] == end:
+                p2 += 1
+        return res
+
     def intervalIntersection(self, A, B):
         starts = []
         ends = []
@@ -44,4 +63,4 @@ class Solution(object):
         return res
 
 test = Solution()
-print test.intervalIntersection([[0,2],[5,10],[13,23],[24,25]], [[1,5],[8,12],[15,24],[25,26]])
+print test.intervalIntersection2([[0,2],[5,10],[13,23],[24,25]], [[1,5],[8,12],[15,24],[25,26]])

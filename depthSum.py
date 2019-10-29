@@ -68,10 +68,7 @@ class Solution2(object):
                 self.res += A * depth
             else:
                 for a in A:
-                    if type(a) == int:
-                        self.res += a * (depth + 1)
-                    else:
-                        dfs(a, depth + 1)
+                    dfs(a, depth + 1)
 
         dfs(nestedList, 0)
 
