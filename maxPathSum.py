@@ -8,6 +8,27 @@ class TreeNode(object):
         self.right = None
 
 class Solution(object):
+    # bug
+    def maxPathSum2(self, root):
+        self.res = float('-inf')
+
+        def helper(node):
+            if not node.left and not node.right:
+                # this handle corner case where only 1 root
+                self.res = max(self.res, node.val)
+                return node.val
+            left = 0
+            right = 0
+            if node.left:
+                left = max(left, helper(node.left))
+            if node.right:
+                right = max(right, helper(node.right))
+            self.res = max(self.res, left + node.val + right)
+            return max(left, right) + node.val
+
+        helper(root)
+        return self.res
+
     def _maxPathSum(self, root):
         if not root:
             return float('-inf')     # 0也行
@@ -39,7 +60,7 @@ n3.left = n5
 n5.right = n6
 
 test = Solution()
-print test.maxPathSum(head_node)
+print test.maxPathSum2(head_node)
 
 #     0
 #   1   2
