@@ -31,7 +31,6 @@ class Solution(object):
             # res的长度不大于nums的长度
             if i + 1 >= k:
                 res.append(nums[deque[0]])
-            # print deque, '          ', res
         return res
 
 

@@ -12,7 +12,7 @@ class Solution:
                 if nums[i] not in used:
                     tmp.append(nums[i])
                     used.add(nums[i])
-                    dfs(nums, tmp, used, idx + 1)
+                    dfs(nums, tmp, used, i + 1)
                     tmp.pop()
                     used.remove(nums[i])
 

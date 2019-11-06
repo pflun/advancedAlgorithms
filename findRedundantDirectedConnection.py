@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# https://www.youtube.com/watch?v=OQi4n8EKRD8
+# https://www.youtube.com/watch?v=lnmJT5b4NlM
 # 三种情况，两种重复顶点分别处理，一种找环
 class Solution(object):
     def findRedundantDirectedConnection(self, edges):

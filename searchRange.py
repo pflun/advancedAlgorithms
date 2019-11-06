@@ -1,4 +1,31 @@
 class Solution(object):
+    def searchRange2(self, nums, target):
+        # find first element larger than target
+        low = 0
+        high = len(nums) - 1
+        while low < high:
+            mid = (low + high) / 2
+            if nums[mid] <= target:
+                low = mid + 1
+            else:
+                high = mid
+        upperBound = low - 1
+
+        # first element smaller
+        low = 0
+        high = len(nums) - 1
+        while low + 1 < high:
+            mid = (low + high) / 2
+            if nums[mid] >= target:
+                high = mid - 1
+            else:
+                low = mid
+        lowerBound = high + 1
+        if lowerBound == 0 or upperBound == 0:
+            return [-1, -1]
+        else:
+            return [lowerBound, upperBound]
+
     def searchRange(self, nums, target):
         res = []
         start = 0
@@ -37,5 +64,5 @@ class Solution(object):
             return res + [low - 1]
 
 test = Solution()
-print test.searchRange([5,7,7,8,8,10], 8)
-print test.searchRange([5,7,7,8,8,10], 6)
+print test.searchRange2([5,7,7,8,8,10], 8)
+print test.searchRange2([5,7,7,8,8,10], 6)

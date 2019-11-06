@@ -6,6 +6,21 @@ class TreeNode(object):
         self.right = None
 
 class Solution(object):
+    def lcaDeepestLeaves2(self, root):
+        def helper(node, depth):
+            if not node:
+                return depth, node
+            left = helper(node.left, depth + 1)
+            right = helper(node.right, depth + 1)
+            if left[0] == right[0]:
+                return left[0], node
+            elif left[0] > right[0]:
+                return left[0], left[1]
+            else:
+                return right[0], right[1]
+
+        return helper(root, 0)[1]
+
     def lcaDeepestLeaves(self, root):
         self.deepest = 0
         self.res = None
