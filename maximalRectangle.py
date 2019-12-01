@@ -16,7 +16,6 @@ class Solution(object):
                 for x in range(len(matrix[0])):
                     for y in (0, x):
                         if self.isValid(matrix, i, j, x, y):
-                            print i, j, x, y
                             currArea = preprocess[i][x] - preprocess[j][x] - preprocess[i][y] + preprocess[j][y]
                             maxArea = max(maxArea, currArea)
 
