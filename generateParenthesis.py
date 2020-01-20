@@ -41,5 +41,31 @@ class Solution(object):
         dfs(n, n, '', n)
         return self.res
 
+    def generateParenthesis3(self, n):
+        self.rnt = []
+
+        def dfs(n, tmp, left, right):
+            if len(tmp) == 2 * n:
+                self.rnt.append(tmp[:])
+            if left > right:
+                return
+            else:
+                # you can only add )
+                if left == 0:
+                    tmp += ')'
+                    dfs(n, tmp, left, right - 1)
+                    tmp = tmp[:-1]
+                # you can add either ( or )
+                else:
+                    tmp += '('
+                    dfs(n, tmp, left - 1, right)
+                    tmp = tmp[:-1]
+                    tmp += ')'
+                    dfs(n, tmp, left, right - 1)
+                    tmp = tmp[:-1]
+
+        dfs(n, '', n, n)
+        return self.rnt
+
 test = Solution()
 print test.generateParenthesis(3)

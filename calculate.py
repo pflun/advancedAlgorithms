@@ -10,7 +10,8 @@ class Solution(object):
         stack = []
         res = 0
         sign = 1
-        for i in range(len(s)):
+        i = 0
+        while i < len(s):
             if s[i].isdigit():
                 num = int(s[i])
                 # 识别比如123
@@ -33,6 +34,7 @@ class Solution(object):
             elif s[i] == ')':
                 # 当前res乘以最近pop出来的（也就是sign），再加上第二次pop出来的（也就是上一层的value）
                 res = res * stack.pop() + stack.pop()
+            i += 1
 
         return res
 

@@ -26,7 +26,7 @@ class Solution(object):
         if not s and not t:
             return True
         elif s and not t:
-            return True
+            return False
         elif t and not s:
             return False
         elif t and s:
