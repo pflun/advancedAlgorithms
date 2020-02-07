@@ -1,6 +1,8 @@
 # https://www.youtube.com/watch?v=gxYV8eZY0eQ
 class Solution(object):
     def diffWaysToCompute(self, input):
+        if len(input) == 1:
+            return input
         ans = []
         for i in range(len(input)):
             op = input[i]
@@ -13,9 +15,6 @@ class Solution(object):
                 for a in l:
                     for b in r:
                         ans.append(self.operation(a, b, op))
-
-        if len(ans) == 0:
-            ans.append(input)
 
         return ans
 
@@ -33,3 +32,4 @@ class Solution(object):
 
 test = Solution()
 print test.diffWaysToCompute("2*3-4*5")
+print test.diffWaysToCompute("2*3")
