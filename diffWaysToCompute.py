@@ -1,4 +1,6 @@
+# -*- coding: utf-8 -*-
 # https://www.youtube.com/watch?v=gxYV8eZY0eQ
+# 有个小bug，base case不应该看input长度为1，比如两位数就不成立。应该检查len(ans)是否为0空
 class Solution(object):
     def diffWaysToCompute(self, input):
         if len(input) == 1:

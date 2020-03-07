@@ -20,7 +20,6 @@ class Solution(object):
 
             # Calculate Ru Du for each node
             inDegree[prerequest[0]] += 1
-        # print dic
 
         # Add Ru Du == 0 into Queue
         for i in range(numCourses):

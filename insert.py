@@ -28,5 +28,29 @@ class Solution(object):
 
         return res
 
+    # 有个corner case要处理比如len(intervals) == 1，general case都过了
+    # 用newInterval把conflict merge了，res不含conflict
+    # 最后把newInterval加到相应位置
+    def insert2(self, intervals, newInterval):
+        if len(intervals) == 0:
+            return [newInterval]
+        res = []
+        i = 0
+        while i < len(intervals):
+            tmpS = max(intervals[i][0], newInterval[0])
+            tmpE = min(intervals[i][1], newInterval[1])
+            if tmpS <= tmpE:
+                newInterval = [min(intervals[i][0], newInterval[0]), max(intervals[i][1], newInterval[1])]
+            else:
+                res.append(intervals[i])
+            i += 1
+        if newInterval[1] < res[0][0]:
+            return [newInterval] + res
+        for i in range(len(res) - 1):
+            if res[i + 1][0] > newInterval[1] and res[i][1] < newInterval[0]:
+                return res[:i + 1] + [newInterval] + res[i + 1:]
+        if newInterval[0] > res[-1][1]:
+            return res + [newInterval]
+
 test = Solution()
 print test.insert([Interval(1, 2), Interval(3, 5), Interval(6, 7), Interval(8, 10), Interval(12, 16)], Interval(4, 9))
