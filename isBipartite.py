@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # https://www.youtube.com/watch?v=NOddgU7AZxc
 # 给每一个node上色，比如当前上白色，邻居就上黑色。能不能根据这个逻辑全部上色
+# 0没上色 1白色 -1黑色
 class Solution(object):
     def isBipartite(self, graph):
         colors = [0 for _ in range(len(graph))]

@@ -2,6 +2,21 @@
 # 跟2sum异曲同工, https://leetcode.com/problems/subarray-sum-equals-k/discuss/102106/Java-Solution-PreSum-%2B-HashMap
 # preSum的n^2解法可过OJ，[i, j] = [0, j] - [0, i]
 class Solution(object):
+    def subarraySum3(self, nums, k):
+        # Same as 2
+        preSum = [nums[0]]
+        for n in nums[1:]:
+            preSum.append(n + preSum[-1])
+        res = 0
+        dic = {}
+        for n in preSum:
+            if n == k:
+                res += 1
+            if n - k in dic:
+                res += dic[n - k]
+            dic[n] = dic.get(n, 0) + 1
+        return res
+
     def subarraySum2(self, nums, k):
         res = 0
         # sum => freq

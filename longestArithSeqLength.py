@@ -1,5 +1,17 @@
 # DP: https://leetcode.com/problems/longest-arithmetic-sequence/discuss/274611/JavaC%2B%2BPython-DP
 class Solution(object):
+    # DP, dp[diff][index] equals to the length of arithmetic sequence at index with difference diff
+    def longestArithSeqLength3(self, A):
+        res = 2
+        dp = {}
+        for j in range(len(A)):
+            dp[j] = {}
+            for i in range(j):
+                d = A[j] - A[i]
+                dp[j][d] = dp[i].get(d, 1) + 1
+                res = max(res, dp[j][d])
+        return res
+
     # brutal force
     def longestArithSeqLength(self, A):
         self.res = 2
@@ -42,4 +54,4 @@ class Solution(object):
         return res
 
 test = Solution()
-print test.longestArithSeqLength2([9,4,7,2,10])
+print test.longestArithSeqLength3([9,4,7,2,10])

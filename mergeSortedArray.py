@@ -27,6 +27,34 @@ class Solution(object):
 
         return nums1
 
+    def mergeSortedArray(self, A, B):
+        j = len(B) - 1
+        k = len(A) - 1
+        i = len(A) - len(B) - 1
+        while i >= 0 and j >= 0:
+            if A[i] > B[j]:
+                A[k] = A[i]
+                k -= 1
+                i -= 1
+            elif A[i] < B[j]:
+                A[k] = B[j]
+                k -= 1
+                j -= 1
+            else:
+                A[k] = A[i]
+                k -= 1
+                A[k] = B[j]
+                k -= 1
+                i -= 1
+                j -= 1
+        if j >= 0:
+            while j >= 0:
+                A[k] = B[j]
+                k -= 1
+                j -= 1
+        return A
+
 # index out of range, because "assume that nums1 has enough space"
 test = Solution()
-print test.merge([1, 3, 8], 3, [2, 4, 6, 7], 4)
+# print test.merge([1, 3, 8], 3, [2, 4, 6, 7], 4)
+print test.mergeSortedArray([2,4,6,None,None,None,None], [0,9,10,11])

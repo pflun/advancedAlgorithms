@@ -22,6 +22,24 @@ class Solution(object):
                 queue.append(curr.right)
         return True
 
+    # 同上面解法
+    def isCompleteTree2(self, root):
+        queue = [root]
+        flag = False
+        while queue:
+            size = len(queue)
+            for _ in range(size):
+                curr = queue.pop(0)
+                if flag and curr:
+                    return False
+                if not curr:
+                    flag = True
+                    continue
+                queue.append(curr.left)
+                queue.append(curr.right)
+
+        return True
+
     def isCompleteTreeDFS(self, root):
         self.level = 0
         self.flag = False

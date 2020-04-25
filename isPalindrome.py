@@ -1,4 +1,22 @@
 class Solution:
+    # in-place
+    def isPalindrome2(self, s):
+        i = 0
+        j = len(s) - 1
+        while i < j:
+            if s[i].isalpha() and s[j].isalpha():
+                if s[i].lower() == s[j].lower():
+                    i += 1
+                    j -= 1
+                    continue
+                else:
+                    return False
+            if not s[i].isalpha():
+                i += 1
+            elif not s[j].isalpha():
+                j -= 1
+        return True
+
     """
     @param: s: A string
     @return: Whether the string is a valid palindrome
@@ -18,4 +36,4 @@ class Solution:
         return True
 
 test = Solution()
-print test.isPalindrome("A man, a plan, a canal: Panama")
+print test.isPalindrome2("A man, a plan, a canal: Panama")

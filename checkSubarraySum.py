@@ -21,5 +21,24 @@ class Solution(object):
 
         return False
 
+    # Same as above
+    def checkSubarraySum2(self, nums, k):
+        if k == 0:
+            return False
+        preSum = []
+        for n in nums:
+            if len(preSum) == 0:
+                preSum.append(n)
+            else:
+                preSum.append(preSum[-1] + n)
+        dic = {}
+        for i in range(len(preSum)):
+            if preSum[i] % 6 in dic:
+                if i - dic[preSum[i] % 6] > 1:
+                    return True
+            else:
+                dic[preSum[i] % 6] = i
+        return False
+
 test = Solution()
 print test.checkSubarraySum([21, 7, 7, 4, 2], 6)

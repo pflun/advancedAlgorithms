@@ -8,6 +8,21 @@ class TreeNode(object):
         self.right = None
 
 class Solution1(object):
+    # preorder无法保证纵向顺序，所以level order存(node, offset)
+    def verticalTraversal2(self, root):
+        g = collections.defaultdict(list)
+        queue = [(root, 0)]
+        while queue:
+            new = []
+            d = collections.defaultdict(list)
+            for node, s in queue:
+                d[s].append(node.val)
+                if node.left:  new += (node.left, s - 1),
+                if node.right: new += (node.right, s + 1),
+            for i in d: g[i].extend(sorted(d[i]))
+            queue = new
+        return [g[i] for i in sorted(g)]
+
     def verticalTraversal(self, root):
         res = []
         dic = {}

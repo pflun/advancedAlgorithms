@@ -24,6 +24,14 @@ class RandomizedSet(object):
             self.pos.pop(val)
             return True
         return False
+        # if val not in self.pos:
+        #     return False
+        # idx = self.pos[val]
+        # self.nums[idx] = self.nums[-1]
+        # self.pos[self.nums[-1]] = idx
+        # self.pos.pop(val)
+        # self.nums.pop()
+        # return True
 
     def getRandom(self):
         return self.nums[random.randint(0, len(self.nums) - 1)]

@@ -10,7 +10,7 @@
 # A: [1, 1, 4, 4, 4, 4, 7, 7, 7, 7, 7, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 # B: [2, 2, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
 # Output: 291
-# Explanation: 1 * 2 + 1 * 2 + 4 * 5 + ... + 2 * 3
+# Explanation: 1 * 2 + 1 * 2 + 4 * 5 + ... + 2 * 3   Math Operation A*B = A1B1+A2B2+...+AnBn
 # Additional information:
 # The vectors are guaranteed to contain a large number of duplicate values,
 #  similar to the example given above.

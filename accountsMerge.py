@@ -17,16 +17,16 @@ class Solution(object):
             self.visited.add(i)
             for j in range(1, len(accounts[i])):
                 email = accounts[i][j]
-                tmp.append(email)
+                tmp.add(email)
                 for idx in self.dic[email]:
                     dfs(idx, accounts, tmp)
 
         for i in range(len(accounts)):
             if i in self.visited:
                 continue
-            tmp = []
+            tmp = set()
             dfs(i, accounts, tmp)
-            self.res.append([accounts[i][0]] + tmp)
+            self.res.append([accounts[i][0]] + list(tmp))
 
         return self.res
 
