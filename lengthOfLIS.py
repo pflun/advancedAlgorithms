@@ -20,3 +20,4 @@ class Solution(object):
 
 test = Solution()
 print test.lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18])
+print test.lengthOfLIS([-2,-1])

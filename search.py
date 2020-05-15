@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# search in rotate array
 # https://www.youtube.com/watch?v=lWEIIFFflQY
 class Solution(object):
     def search(self, nums, target):

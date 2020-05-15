@@ -64,5 +64,5 @@ class Solution(object):
             return res + [low - 1]
 
 test = Solution()
-print test.searchRange2([5,7,7,8,8,10], 8)
+print test.searchRange3([5,7,7,8,8,10], 8)
 print test.searchRange2([5,7,7,8,8,10], 6)

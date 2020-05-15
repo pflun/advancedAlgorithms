@@ -60,4 +60,4 @@ p5.next = p6
 p6.next = p7
 
 test = Solution()
-print test.reverseKGroup(head, 2).val
+print test.reverseKGroup2(head, 2).val

@@ -1,5 +1,6 @@
 # https://www.geeksforgeeks.org/sum-two-large-numbers/
 # two float numbers
+# add two decimal
 class Solution(object):
     def sumTwoNumbers(self, str1, str2):
         n1, f1 = str1.split('.')[0], str1.split('.')[1]

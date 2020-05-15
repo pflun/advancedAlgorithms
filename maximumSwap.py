@@ -23,4 +23,5 @@ class Solution(object):
         return res
 
 test = Solution()
-print test.maximumSwap(9937)
+print test.maximumSwap(2736)
+print test.maximumSwap(9973)
