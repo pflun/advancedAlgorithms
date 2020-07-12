@@ -23,7 +23,7 @@ class Solution(object):
                     if self.boarder == False:
                         res += 1
 
-        return res, grid
+        return res
 
 test = Solution()
 print test.closedIsland([[1,1,1,1,1,1,1],

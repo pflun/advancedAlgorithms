@@ -45,6 +45,28 @@ def print_tree(root):
         print_tree(root.right)
 
 class Solution(object):
+    def isSymmetric2(self, root):
+        if not root:
+            return True
+
+        def helper(node1, node2):
+            if not node1 or not node2:
+                if not node1 and not node2:
+                    return True
+                else:
+                    return False
+            if node1.val != node2.val:
+                return False
+            left = helper(node1.left, node2.right)
+            right = helper(node1.right, node2.left)
+            if left and right:
+                return True
+            else:
+                return False
+
+        return helper(root.left, root.right)
+
+
     def isSymmetric(self, root):
         child_left = root.left
         child_right = root.right
@@ -58,8 +80,8 @@ class Solution(object):
             else:
                 if node1.val != node2.val:
                     return False
-                stack.append((node1.right, node2.right))
-                stack.append((node1.left, node2.left))
+                stack.append((node1.right, node2.left))
+                stack.append((node1.left, node2.right))
         return True
 
 
