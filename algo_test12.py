@@ -67,14 +67,43 @@ ordDic[3] = 3
 ordDic[1] = 1
 for k in ordDic.keys():
     print k
-import numpy
-mtx = numpy.array([
-  [1, 3, 5, 7],
-  [10, 11, 16, 0],
-  [23, 0, 34, 0],
-  [51, 52, 54, 40]
-])
-print mtx[:2, :2]
-dp = {}
-dp[1, 2] = '12'
-print dp.get(1, 2)
+# import numpy
+# mtx = numpy.array([
+#   [1, 3, 5, 7],
+#   [10, 11, 16, 0],
+#   [23, 0, 34, 0],
+#   [51, 52, 54, 40]
+# ])
+# print mtx[:2, :2]
+# dp = {}
+# dp[1, 2] = '12'
+# print dp.get(1, 2)
+
+def solution(angles):
+    # Type your solution here
+    cnt = 0
+    for a in angles:
+        if a == '<':
+            cnt += 1
+        elif a == '>':
+            cnt -= 1
+        if cnt < 0:
+            cnt = 0
+    right = cnt
+    cnt = 0
+    for a in angles[::-1]:
+        if a == '<':
+            cnt -= 1
+        elif a == '>':
+            cnt += 1
+        if cnt < 0:
+            cnt = 0
+    left = cnt
+    res = ''
+    for _ in range(left):
+        res += '<'
+    res += angles
+    for _ in range(right):
+        res += '>'
+    return res
+print solution("><<><")
