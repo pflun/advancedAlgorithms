@@ -28,7 +28,7 @@ class SegmentTree(object):
         else:
             self.update(root.right, index, val)
         # 更新每个节点的sum
-        root.sum = root.left + root.right.sum
+        root.sum = root.left.sum + root.right.sum
 
     def querySum(self, root, i, j):
         # 当前节点的start end刚好覆盖（是要找的）
