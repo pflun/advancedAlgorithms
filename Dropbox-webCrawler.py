@@ -12,9 +12,7 @@ class Crawler(object):
         self.dic = {} # url => text
 
     def crawl(self):
-        while True:
-            if len(self.queue) == 0:
-                break
+        while self.queue:
             currUrl = self.queue.pop(0)
             if currUrl in self.visited:
                 continue
