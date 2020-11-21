@@ -28,7 +28,6 @@ class Solution(object):
 
         return res
 
-    # 有个corner case要处理比如len(intervals) == 1，general case都过了
     # 用newInterval把conflict merge了，res不含conflict
     # 最后把newInterval加到相应位置
     def insert2(self, intervals, newInterval):
@@ -44,6 +43,8 @@ class Solution(object):
             else:
                 res.append(intervals[i])
             i += 1
+        if not res:
+            return [newInterval]
         if newInterval[1] < res[0][0]:
             return [newInterval] + res
         for i in range(len(res) - 1):

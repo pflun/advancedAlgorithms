@@ -14,7 +14,6 @@ class Solution(object):
         dp = [[] for _ in range(N + 1)]
 
         for t in range(N + 1):
-            dp[t] = []
             tmp = [[]]
             j = 0
             # try all candidates

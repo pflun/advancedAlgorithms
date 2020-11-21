@@ -1,3 +1,4 @@
+# Another post order traversal solution: https://leetcode.com/problems/reconstruct-itinerary/discuss/437594/super-easy-and-clean-Javascript-(Greedy)-DFS-with-detailed-explanations
 # Definition for a Directed graph node
 class DirectedGraphNode:
     def __init__(self, x):
