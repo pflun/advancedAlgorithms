@@ -107,3 +107,6 @@ def solution(angles):
         res += '>'
     return res
 print solution("><<><")
+unsorted = [[2,6], [3,2], [2,5]]
+unsorted.sort()
+print unsorted
