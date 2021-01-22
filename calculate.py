@@ -82,4 +82,5 @@ class Solution(object):
 
 test = Solution()
 print test.calculate('(1+(4+5+2 + (1 + 1))-3)+(6+8 + 1)')
+print test.calculate('(11+(4-3)+(6+8 + 11)')
 print test.calculate2('(2+3) -4')
