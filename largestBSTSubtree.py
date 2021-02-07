@@ -8,6 +8,34 @@ class TreeNode(object):
         self.right = None
 
 class Solution(object):
+    # O(n)
+    def largestBSTSubtree2(self, root):
+        def largestBST(node):
+            if node == None:
+                return (float('inf'), float('-inf'), True, None, 0)
+
+            Lmin, Lmax, Lbst, Lnode, Lsize = largestBST(node.left)
+            Rmin, Rmax, Rbst, Rnode, Rsize = largestBST(node.right)
+
+            minVal = min([Lmin, Rmin, node.val])
+            maxVal = max([Lmax, Rmax, node.val])
+            Tbst = Lbst and Rbst and (node.val > Lmax and node.val < Rmin)
+
+            if Tbst:
+                BSTnode = node
+                BSTsize = Lsize + Rsize + 1
+            elif Lsize > Rsize:
+                BSTnode = Lnode
+                BSTsize = Lsize
+            else:
+                BSTnode = Rnode
+                BSTsize = Rsize
+
+            return (minVal, maxVal, Tbst, BSTnode, BSTsize)
+
+        _, _, _, _, size = largestBST(root)
+        return size
+
     def largestBSTSubtree(self, root):
         self.largest = 0
 
