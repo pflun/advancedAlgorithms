@@ -7,6 +7,7 @@
 # buy(12, 30) 返回25,第一行的20个被买了,还有上一行剩的5个也被买了,然后还差5个的订单,存起来
 # 另外,
 # 如果有多个卖家用不同的价格卖同一个商品,并且价格都低于当前buy的价格,先买哪个无所谓。反之亦然
+# Solution 2: min-heap sellOrders, max-heap buyOrders: https://leetcode.com/discuss/interview-question/859481/Wish-or-Phone-Interview-or-Trading-System
 # bug
 class buySellClass(object):
     def __init__(self):

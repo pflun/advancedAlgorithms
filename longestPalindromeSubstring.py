@@ -2,6 +2,29 @@
 # 由每个字符作为起点，往两边扫。
 # DP: n乘n bool数组存从［i，j］是否为回文串，子问题是否是回文串是由"头尾两个char是否相等 ＋ 中间substring是否回文"决定的
 class Solution(object):
+    def longestPalindrome3(self, s):
+        ans = ''
+        max_len = 0
+        n = len(s)
+        DP = [[0] * n for _ in xrange(n)]
+        for i in xrange(n):
+            DP[i][i] = True
+            max_len = 1
+            ans = s[i]
+        for i in xrange(n - 1):
+            if s[i] == s[i + 1]:
+                DP[i][i + 1] = True
+                ans = s[i:i + 2]
+                max_len = 2
+        for j in xrange(n):
+            for i in xrange(0, j - 1):
+                if s[i] == s[j] and DP[i + 1][j - 1]:
+                    DP[i][j] = True
+                    if max_len < j - i + 1:
+                        ans = s[i:j + 1]
+                        max_len = j - i + 1
+        return ans
+
     def longestPalindrome(self, s):
         if len(s) == 0:
             return ''

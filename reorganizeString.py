@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# 用prev暂存这一轮加过的，下一轮再把prev加进heap
 import heapq
 class Solution(object):
     def reorganizeString(self, S):

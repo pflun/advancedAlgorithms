@@ -1,4 +1,10 @@
+# -*- coding: utf-8 -*-
+# 这第一个解法还可以用在calculator只有+/-/*上，把误加的减去，track上次一的乘就行（如果下一次不是乘，上次一的乘就是乘完加到res上）
 class Solution(object):
+    # num: remaining num string
+    # temp: temporally string with operators added
+    # cur: current result of "temp" string
+    # last: last multiply-level number in "temp". if next operator is "multiply", "cur" and "last" will be updated
     def addOperators(self, num, target):
         res, self.target = [], target
         for i in range(1, len(num) + 1):
@@ -16,6 +22,7 @@ class Solution(object):
             if i == 1 or (i > 1 and num[0] != "0"):  # prevent "00*" as a number
                 self.dfs(num[i:], temp + "+" + val, cur + int(val), int(val), res)
                 self.dfs(num[i:], temp + "-" + val, cur - int(val), -int(val), res)
+                # 上面加减不解释了，下面乘是a + b * c => (a + b) - b + b * c，到b时默认+但是track上次加的b，到c时把上次误加的b减去，再加上b*c(这里也可能是误加取决于下次是+/*)，所以一直track这个可能误加的
                 self.dfs(num[i:], temp + "*" + val, cur - last + last * int(val), last * int(val), res)
 
     def addOperators2(self, num, target):
