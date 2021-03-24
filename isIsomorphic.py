@@ -1,37 +1,36 @@
+#
 class Solution:
     # @param {string} s a string
     # @param {string} t a string
     # @return {boolean} true if the characters in s
     # can be replaced to get t or false
     def isIsomorphic(self, s, t):
-        d1, d2 = {}, {}
-        for i, val in enumerate(s):
-            d1[val] = d1.get(val, []) + [i]
-            print d1
-        for i, val in enumerate(t):
-            d2[val] = d2.get(val, []) + [i]
-            print d2
-        return sorted(d1.values()) == sorted(d2.values())
+        pattern1 = {}
+        pattern2 = {}
 
-    def isIsomorphic2(self, s, t):
-        if len(s) != len(t):
-            return False
+        i = 0
+        while i < len(s):
+            if s[i] not in pattern1:
+                pattern1[s[i]] = t[i]
 
-        d1, d2 = {}, {}
-        for i in range(len(s)):
-            if s[i] in d1:
-                d1[s[i]].append(i)
-            else:
-                d1[s[i]] = [i]
-        for i in range(len(t)):
-            if t[i] in d2:
-                d2[t[i]].append(i)
-            else:
-                d2[t[i]] = [i]
-        if sorted(d1.values()) == sorted(d2.values()):
-            return True
-        else:
-            return False
+            if t[i] not in pattern2:
+                pattern2[t[i]] = s[i]
+
+            if s[i] in pattern1:
+                currMatch = pattern1[s[i]]
+                if currMatch != t[i]:
+                    return False
+
+            if t[i] in pattern2:
+                currMatch = pattern2[t[i]]
+                if currMatch != s[i]:
+                    return False
+
+            i += 1
+
+        return True
 
 test = Solution()
-print test.isIsomorphic2("paper", "title")
+print test.isIsomorphic("egg", "add")
+print test.isIsomorphic("foo", "bar")
+print test.isIsomorphic("paper", "title")

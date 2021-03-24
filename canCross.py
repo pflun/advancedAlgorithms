@@ -1,6 +1,6 @@
 # https://www.youtube.com/watch?v=-FBfrVz841k
 class Solution(object):
-    def canCross(self, stones):
+    def canCross2(self, stones):
         if len(stones) <= 1:
             return True
         dic = {}

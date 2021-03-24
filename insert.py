@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# LC 57 Insert Interval
 # 类似Google Rain Water Drop，binary search找left boundary overlap with newInterval and right boundary，overlap还是用max min去找
 # Assume sorted, intervals = sorted(intervals, key=lambda x: x.start)
 # Definition for an interval.

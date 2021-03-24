@@ -19,6 +19,7 @@ class Solution(object):
         return res
 
     # Microsoft onsite, merge one new interval into sorted intervals
+    # LC 57 Insert Interval, checkout insert.py
     def mergeNew(self, intervals, newInterval):
         arr = []
         isMerged = False

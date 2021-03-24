@@ -18,7 +18,6 @@ class Solution:
         for u, v in edges:
             neighbors[u].append(v)
             neighbors[v].append(u)
-        print neighbors
 
         visited = {}
         from Queue import Queue
@@ -38,3 +37,5 @@ class Solution:
 
 test = Solution()
 print test.validTree(5, [[0, 1], [0, 2], [0, 3], [1, 4]])
+print test.validTree(5, [[0,1],[1,2],[2,3],[1,3],[1,4]])
+print test.validTree(5, [[0,1],[1,2],[2,3],[1,3]])

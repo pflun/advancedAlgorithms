@@ -3,20 +3,18 @@ class Solution(object):
     def validPalindrome(self, s):
         left = 0
         right = len(s) - 1
-        used = 0
 
         while left < right:
             if s[left] == s[right]:
                 left += 1
                 right -= 1
-                continue
-            elif used == 0:
-                if self.helper(s[left + 1: right + 1]) or self.helper(s[left: right]):
+            else:
+                skip_left = self.helper(s[left + 1: right])
+                skip_right = self.helper(s[left: right - 1])
+                if skip_left or skip_right:
                     return True
                 else:
                     return False
-            else:
-                return False
         return True
 
     def helper(self, s):
@@ -29,4 +27,7 @@ class Solution(object):
             right -= 1
         return True
 
-print False or True
+test = Solution()
+print test.validPalindrome("aba")
+print test.validPalindrome("acba")
+print test.validPalindrome("aazzzzz")

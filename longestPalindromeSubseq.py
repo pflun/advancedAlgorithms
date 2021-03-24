@@ -15,3 +15,7 @@ class Solution(object):
                     dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
 
         return dp[0][n - 1]
+
+test = Solution()
+print test.longestPalindromeSubseq("bbbab")
+print test.longestPalindromeSubseq("cbbd")
