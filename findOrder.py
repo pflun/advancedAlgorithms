@@ -1,4 +1,6 @@
-# Graph BFS + inDegree (Ru Du) + Rocord visited
+# Course Schedule II
+# Topological sort
+# Graph BFS + inDegree (Ru Du) + Record visited
 class Solution(object):
     def findOrder(self, numCourses, prerequisites):
 

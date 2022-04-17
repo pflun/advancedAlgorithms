@@ -110,3 +110,5 @@ print solution("><<><")
 unsorted = [[2,6], [3,2], [2,5]]
 unsorted.sort()
 print unsorted
+import heapq
+print heapq.nlargest(2, [3, 5, 7, 9])
