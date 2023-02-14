@@ -29,22 +29,21 @@ class Solution1(object):
         return res
 
     def isValidBST3(self, root):
-        if not root:
-            return True
-
         self.res = True
         self.prev = float('-inf')
 
         def inorder(node):
+            if not node:
+                return None
             if node.left:
                 inorder(node.left)
-            if self.prev > node.val:
+            if node.val <= self.prev:
                 self.res = False
-                return
             self.prev = node.val
             if node.right:
                 inorder(node.right)
 
+        inorder(root)
         return self.res
 
     def isValidBST(self, root):

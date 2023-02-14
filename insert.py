@@ -30,6 +30,7 @@ class Solution(object):
 
         return res
 
+    # better solution
     # 用newInterval把conflict merge了，res不含conflict
     # 最后把newInterval加到相应位置
     def insert2(self, intervals, newInterval):

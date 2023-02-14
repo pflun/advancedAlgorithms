@@ -17,7 +17,7 @@ class Solution(object):
                 else:
                     start = mid
             # 中线右边, m < s && m < e
-            elif nums[mid] < nums[end] and nums[start] < nums[mid]:
+            elif nums[mid] < nums[end] and nums[start] > nums[mid]:
                 if nums[mid] <= target and target <= nums[end]:
                     start = mid
                 else:

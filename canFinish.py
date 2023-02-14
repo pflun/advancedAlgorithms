@@ -42,13 +42,10 @@ class Solution(object):
                     queue.append(subcourse)
 
         # Check if all Ru Du become 0 (0 means course can be took)
-        if any(inDegree) != 0:
-            return False
-        return True
-
-        # for key, value in dic.items():
-        #     print key, value
-        # print queue
+        return all(x == 0 for x in inDegree)
+        # if any(inDegree) != 0:
+        #     return False
+        # return True
 
 # DFS Topological sort, 找环
 # https://www.youtube.com/watch?v=M6SBePBMznU
@@ -100,3 +97,4 @@ class Solution2(object):
 
 test = Solution()
 print test.canFinish(3, [[1, 0], [2, 1], [2, 0]])
+print test.canFinish(2, [[1,0]])

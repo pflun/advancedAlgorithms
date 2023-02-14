@@ -21,7 +21,7 @@ print binarySearch([1,2,3,4,5,6,7,8], 7)
 # first larger than threshold
 l = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
 
-print bisect(l, 55)
-print bisect(l, 99)
-print bisect(l, 100)
-print bisect(l, 101)
+# print bisect(l, 55)
+# print bisect(l, 99)
+# print bisect(l, 100)
+# print bisect(l, 101)

@@ -112,3 +112,16 @@ unsorted.sort()
 print unsorted
 import heapq
 print heapq.nlargest(2, [3, 5, 7, 9])
+
+class Player(object):
+    def __init__(self, dir):
+        self.directions = set(['up', 'down', 'left', 'right'])
+        self.dir = None
+        if dir in self.directions:
+            self.dir = dir
+        else:
+            raise ValueError('wrong dir')
+
+p2 = Player('up')
+print p2.dir
+p1 = Player('upppp')

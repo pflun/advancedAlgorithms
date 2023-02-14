@@ -33,3 +33,4 @@ class Solution:
 
 test = Solution()
 print test.isValidParentheses("(A)[]{}")
+print test.isValidParentheses("()[]{}")

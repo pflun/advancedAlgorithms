@@ -1,4 +1,28 @@
 class Solution(object):
+    def unhappyFriends2(self, n, preferences, pairs):
+        prefer = {}
+        pair = {}
+        for p1, p2 in pairs:
+            pair[p1] = p2
+            pair[p2] = p1
+        for i in range(len(preferences)):
+            for j in range(len(preferences[i])):
+                if i not in prefer:
+                    prefer[i] = {}
+                # {person_1 => {person_2 : order}}
+                prefer[i][preferences[i][j]] = j
+        res = 0
+        for i in range(len(preferences)):
+            for j in range(len(preferences[i])):
+                x = i
+                y = pair[x]
+                u = preferences[x][j]  # for all x's preferences
+                v = pair[u]
+                if prefer[x][u] < prefer[x][y] and prefer[u][x] < prefer[u][v]:
+                    res += 1
+                    break
+        return res
+
     # bug
     def unhappyFriends(self, n, preferences, pairs):
         self.dic = {}

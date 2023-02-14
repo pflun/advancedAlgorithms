@@ -6,6 +6,23 @@ class TreeNode(object):
         self.right = right
 
 class Solution(object):
+    # bfs
+    def maxDepth2(self, root):
+        if not root:
+            return 0
+        res = 0
+        queue = [root]
+        while queue:
+            for _ in range(len(queue)):
+                curr = queue.pop(0)
+                if curr.left:
+                    queue.append(curr.left)
+                if curr.right:
+                    queue.append(curr.right)
+            res += 1
+        return res
+
+    # dfs
     def maxDepth(self, root):
         if root == None:
             return 0
@@ -13,13 +30,6 @@ class Solution(object):
         right = self.maxDepth(root.right)
         # print left, right
         return max(left, right) + 1
-
-    def pre_order(self, tree):
-        if tree == None:
-            return
-        print tree.val
-        self.pre_order(tree.left)
-        self.pre_order(tree.right)
 
 class Solution2(object):
     def maxDepth(self, root):

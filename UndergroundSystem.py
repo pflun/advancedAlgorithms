@@ -1,5 +1,4 @@
 class UndergroundSystem(object):
-
     def __init__(self):
         # start => {end => [total time, total ride]}
         self.avg = {}
