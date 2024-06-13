@@ -86,3 +86,52 @@ class Solution1(object):
 test = Solution1()
 print test.isValidBST(test.sortedArrayToBST([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]))
 print test.test1([1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 11])
+
+def compare(a, b):
+    if a < b:
+        return -1
+    elif a > b:
+        return 1
+    return 0
+test_arr = [1, 2, 3, 4, 5]
+sorted_arr = sorted(test_arr, cmp=lambda a, b: compare(a, b))
+print sorted_arr
+
+# for i in range(5):
+#     if i != 2:
+#         print i
+#     # skip
+#     i = 3
+
+def calculate(s):
+    res = 0
+    stack = []
+    currNum = 0
+    sign = '+'
+    i = 0
+    while i < len(s):
+        if s[i].isdigit():
+            currNum = int(s[i])
+            while i + 1 < len(s) and s[i + 1].isdigit():
+                currNum = currNum * 10 + int(s[i + 1])
+                i += 1
+        if not s[i].isdigit() and not s[i] == ' ' or i == len(s) - 1:
+            if sign == '+':
+                stack.append(int(currNum))
+            elif sign == '-':
+                stack.append(-int(currNum))
+            elif sign == '*':
+                stack[-1] *= int(currNum)
+            elif sign == '/':
+                stack[-1] /= int(currNum)
+            sign = s[i]
+            currNum = 0
+        i += 1
+
+    for n in stack:
+        res += n
+    return res
+
+print calculate("3+2*2")
+print calculate(" 3/2 ")
+print calculate(" 3+5 / 2 ")

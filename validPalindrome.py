@@ -9,8 +9,8 @@ class Solution(object):
                 left += 1
                 right -= 1
             else:
-                skip_left = self.helper(s[left + 1: right])
-                skip_right = self.helper(s[left: right - 1])
+                skip_left = self.helper(s[left + 1: right + 1])
+                skip_right = self.helper(s[left: right])
                 if skip_left or skip_right:
                     return True
                 else:

@@ -1,5 +1,6 @@
 class Solution(object):
     def rankTeams(self, votes):
+        # {A: {0: 5}, B: {1: 2, 2: 3} ...}
         dic = {}
         for v in votes:
             for i in range(len(v)):
@@ -9,7 +10,7 @@ class Solution(object):
                     dic[v[i]][i] = 0
                 dic[v[i]][i] += 1
 
-        # customer comparator
+        # custom comparator
         def compare(a, b, size):
             for i in range(size):
                 if i in a[1] and i not in b[1]:

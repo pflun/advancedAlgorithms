@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import collections
 from sortedArrayToBST import Solution
 # Definition for a binary tree node.
 class TreeNode(object):
@@ -48,7 +49,7 @@ class Solution1(object):
 test = Solution()
 head_node = test.sortedArrayToBST([0, 1, 2, 4, 5, 3, 6, 7])
 test1 = Solution1()
-print test1.verticalTraversal(head_node)
+print test1.verticalTraversal2(head_node)
 
 #     5
 #   2   6

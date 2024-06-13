@@ -53,14 +53,14 @@ class Solution(object):
         board[i][j] = tmp
 
     def findWords(self, board, words):
-        self.res = []
+        self.res = set()
 
         def dfs(board, i, j, depth, word):
             # 出界，depth为0，当前cell不等于word当前位
             if i < 0 or j < 0 or i >= len(board) or j >= len(board[0]) or depth == 0 or board[i][j] != word[len(word) - depth]:
                 return
             if depth == 1:
-                self.res.append(word)
+                self.res.add(word)
 
             # same letter cell may not be used more than once, backtracking
             tmp = board[i][j]
@@ -77,10 +77,10 @@ class Solution(object):
                 for j in range(len(board[0])):
                     dfs(board, i, j, len(word), word)
 
-        return self.res
+        return list(self.res)
 
     def findWords2(self, board, words):
-        self.res = []
+        self.res = set()
         self.dir = [[0, 1], [1, 0], [0, -1], [-1, 0]]
 
         def dfs(board, tmp, target, visited, i, j):
@@ -90,7 +90,7 @@ class Solution(object):
             tmp += board[i][j]
             visited.add((i, j))
             if len(target) == 0:
-                self.res.append(tmp)
+                self.res.add(tmp)
                 return
             for d in self.dir:
                 x = i + d[0]
@@ -103,7 +103,7 @@ class Solution(object):
                 for j in range(len(board[0])):
                     dfs(board, '', word, set(), i, j)
 
-        return self.res
+        return list(self.res)
 
 test = Solution()
 print test.findWords2(
@@ -111,3 +111,7 @@ print test.findWords2(
   ['e','t','a','e'],
   ['i','h','k','r'],
   ['i','f','l','v']], ["oath","pea","eat","rain"])
+print test.findWords2([["o","a","b","n"],
+                       ["o","t","a","e"],
+                       ["a","h","k","r"],
+                       ["a","f","l","v"]], ["oa","oaa"])

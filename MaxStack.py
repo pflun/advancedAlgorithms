@@ -21,11 +21,11 @@ class MaxStack(objecct):
         return curr[1]
 
     def popMax(self):
-        arr = [self.stack.pop()]
-        maxVal = arr[0][1]
+        arr = []
+        maxVal = self.stack[-1][1]
         while self.stack and self.stack[-1][0] != maxVal:
             arr.append(self.stack.pop())
         curr = self.stack.pop()
         for a in arr[::-1]:
-            self.stack.append(a)
+            self.push(a[0])
         return curr[0]

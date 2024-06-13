@@ -1,4 +1,38 @@
+# -*- coding: utf-8 -*-
 class Solution(object):
+    # binarysearchtemplate.py
+    def searchRange3(self, nums, target):
+
+        def lower_bound(arr, x):
+            l = 0
+            r = len(arr)
+            while l < r:
+                m = (l + r) / 2
+                if arr[m] >= x:
+                    r = m
+                else:
+                    l = m + 1
+            return l
+
+        def upper_bound(arr, x):
+            l = 0
+            r = len(arr)
+            while l < r:
+                m = (l + r) / 2
+                if arr[m] > x:
+                    r = m
+                else:
+                    l = m + 1
+            return l
+
+        if not nums:
+            return [-1, -1]
+        left = lower_bound(nums, target)
+        if left < 0 or left >= len(nums) or nums[left] != target:
+            return [-1, -1]
+        else:
+            return [left, upper_bound(nums, target) - 1]
+
     def searchRange2(self, nums, target):
         # find first element larger than target
         low = 0
@@ -65,4 +99,5 @@ class Solution(object):
 
 test = Solution()
 print test.searchRange3([5,7,7,8,8,10], 8)
-print test.searchRange2([5,7,7,8,8,10], 6)
+# print test.searchRange2([5,7,7,8,8,10], 6)
+print test.searchRange3([2,2], 3)

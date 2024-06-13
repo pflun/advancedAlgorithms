@@ -11,17 +11,17 @@ class Solution:
                 # shallow copy
                 self.res.append(tmp[:])
 
-            for i in range(prev + 1, n + 1):
+            for i in range(prev, n + 1):
                 if self.used[i]:
                     continue
                 self.used[i] = True
                 tmp.append(i)
-                dfs(n, tmp, i)
+                dfs(n, tmp, i + 1)
                 # backtracking:
                 self.used[i] = False
                 tmp.pop()
 
-        dfs(n, [], 0)
+        dfs(n, [], 1)
 
         return self.res
 

@@ -36,4 +36,4 @@ class Solution(object):
         return s
 
 test = Solution()
-print test.removeDuplicates("deeedbbcccbdaa", 3)
+print test.removeDuplicates2("deeedbbcccbdaa", 3)

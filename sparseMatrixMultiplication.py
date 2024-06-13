@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
 # https://www.cnblogs.com/grandyang/p/5282959.html
 class Solution(object):
+    # A/B里面有0不用算就直接跳过
     def multiply(self, A, B):
         res = [[0 for _ in range(len(B[0]))] for _ in range(len(A))]
         for i in range(len(A)):
@@ -38,3 +40,5 @@ print test.multiply([
   [ 0, 0, 0 ],
   [ 0, 0, 1 ]
 ])
+nums = [10,4,8,3]
+print nums[len(nums):0:-1]

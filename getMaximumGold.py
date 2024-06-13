@@ -15,13 +15,13 @@ class Solution(object):
             return gold
         visited.add((i, j))
         gold += grid[i][j]
-        tmpGold = 0
+        nextGold = 0
         for d in self.dir:
             x = i + d[0]
             y = j + d[1]
-            tmpGold = max(tmpGold, self.dfs(grid, x, y, visited, gold))
+            nextGold = max(nextGold, self.dfs(grid, x, y, visited, gold))
         visited.remove((i, j))
-        return tmpGold
+        return nextGold
 
 test = Solution()
 print test.getMaximumGold([

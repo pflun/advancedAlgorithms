@@ -21,3 +21,16 @@ class Solution(object):
 
 test = Solution()
 test.test()
+
+dic = {0: 0, 1: 9, 2: 8, 3: 7, 4: 6}
+for k, v in sorted(dic.items(), key=lambda (k, v): (v, k)):
+    print k, v
+arr = [[1, 9], [2, 8], [3, 7], [4, 6]]
+for a in sorted(arr, key=lambda x:x[1]):
+    print a[0], a[1]
+for k, v in sorted(dic.items(), reverse=True):
+    print k, v
+arr = ["cat", "bat", "rat"]
+print " ".join(arr)
+text = "aaa aaa"
+print text.join("")

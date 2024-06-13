@@ -35,6 +35,7 @@ class Solution(object):
         for i in range(len(preSum)):
             if preSum[i] % 6 in dic:
                 if i - dic[preSum[i] % 6] > 1:
+                    print i, dic[preSum[i] % 6], preSum, dic
                     return True
             else:
                 dic[preSum[i] % 6] = i
@@ -42,3 +43,4 @@ class Solution(object):
 
 test = Solution()
 print test.checkSubarraySum([21, 7, 7, 4, 2], 6)
+print test.checkSubarraySum2([23,2,4,6,7], 6)

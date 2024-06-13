@@ -14,6 +14,7 @@ class Solution(object):
                 num = stack.pop()
                 prevString = stack.pop()
                 curString = prevString + num * curString
+                curNum = 0
             elif c.isdigit():
                 curNum = curNum * 10 + int(c)
             else:
@@ -46,4 +47,4 @@ class Solution(object):
         return currString
 
 test = Solution()
-print test.decodeString("3[a2[c]]")
+print test.decodeString2("3[a2[c]]")
