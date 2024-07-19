@@ -1,6 +1,40 @@
-# Two pointer: dic count char => faq, right.found() dic[char]++, when left++, dic[left]--. if counter == len(t): res=min(res, len(curr))
-# https://www.youtube.com/watch?v=63i802XLgOM
 class Solution(object):
+    def minWindow2(self, s, t):
+        s_count, t_count = {}, {}
+        l, r = 0, 0
+        results = []
+        for i in t:
+            t_count[i] = t_count.get(i, 0) + 1
+
+        while r <= len(s) - 1:
+            # Find valid window
+            s_count[s[r]] = s_count.get(s[r], 0) + 1
+            r += 1
+            if not self.include(s_count, t_count):
+                continue
+
+            # Minimize this window
+            while l < r:
+                s_count[s[l]] -= 1
+                l += 1
+                if self.include(s_count, t_count):
+                    continue
+                results.append(s[l - 1:r])
+                break
+
+        # Return result
+        if not results:
+            return ""
+        return min(results, key=len)
+
+    def include(self, s_count, t_count):
+        for k, v in t_count.items():
+            if k not in s_count or s_count[k] < v:
+                return False
+        return True
+
+    # Two pointer: dic count char => faq, right.found() dic[char]++, when left++, dic[left]--. if counter == len(t): res=min(res, len(curr))
+    # https://www.youtube.com/watch?v=63i802XLgOM
     def minWindow(self, s, t):
         if len(s) == 0 or len(t) == 0 or len(t) > len(s):
             return ""
@@ -64,4 +98,4 @@ class Solution(object):
         return res
 
 test = Solution()
-print test.minWindow("ADOBECODEBANC", "ABC")
+print test.minWindow2("ADOBECODEBANC", "ABC")
