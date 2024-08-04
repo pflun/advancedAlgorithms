@@ -38,4 +38,7 @@ class Solution(object):
 
 test = Solution()
 print test.lengthOfLongestSubstringKDistinct("eceba", 2)
+print test.lengthOfLongestSubstringKDistinct("cabbacc", 1)
+print test.lengthOfLongestSubstringKDistinct("cabbacc", 2)
+print test.lengthOfLongestSubstringKDistinct("cabbacc", 3)
 print test.lengthOfShortestSubstringKDistinct("12123", 2)
