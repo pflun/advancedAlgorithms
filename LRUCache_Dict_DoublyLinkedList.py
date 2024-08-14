@@ -17,7 +17,7 @@ class LRUCache(object):
         self.data = {}
 
     def deleteNode(self, node):
-        if node.val == 'head' or node.val == 'tail':
+        if node.value == 'head' or node.value == 'tail':
             return
         else:
             del self.data[node.key]

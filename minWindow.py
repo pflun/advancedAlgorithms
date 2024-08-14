@@ -1,35 +1,39 @@
+# Further optimize, matches: how many keys in dicT have completely matched. When matches == len(dicT.keys()), we have a valid window.
+# If dicS[x] is increased to match dicT[x], matches += 1
+# If dicS[x] is decreased to be dicT[x] - 1, matches -= 1
 class Solution(object):
     def minWindow2(self, s, t):
-        s_count, t_count = {}, {}
+        dicS, dicT = {}, {}
         l, r = 0, 0
         results = []
         for i in t:
-            t_count[i] = t_count.get(i, 0) + 1
+            dicT[i] = dicT.get(i, 0) + 1
 
         while r <= len(s) - 1:
             # Find valid window
-            s_count[s[r]] = s_count.get(s[r], 0) + 1
+            dicS[s[r]] = dicS.get(s[r], 0) + 1
             r += 1
-            if not self.include(s_count, t_count):
+            if not self.include(dicS, dicT):
                 continue
 
             # Minimize this window
             while l < r:
-                s_count[s[l]] -= 1
+                dicS[s[l]] -= 1
                 l += 1
-                if self.include(s_count, t_count):
+                if self.include(dicS, dicT):
                     continue
-                results.append(s[l - 1:r])
-                break
+                else:
+                    results.append(s[l - 1:r])
+                    break
 
         # Return result
         if not results:
             return ""
         return min(results, key=len)
 
-    def include(self, s_count, t_count):
-        for k, v in t_count.items():
-            if k not in s_count or s_count[k] < v:
+    def include(self, dicS, dicT):
+        for k, v in dicT.items():
+            if k not in dicS or dicS[k] < v:
                 return False
         return True
 
@@ -99,3 +103,5 @@ class Solution(object):
 
 test = Solution()
 print test.minWindow2("ADOBECODEBANC", "ABC")
+print test.minWindow2("aabdaczzzzz", "abc")
+print test.minWindow2("aabdaczzzzz", "")
