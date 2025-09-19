@@ -1,4 +1,4 @@
-class MaxStack(objecct):
+class MaxStack(object):
     def __init__(self):
         self.stack = []
 
@@ -29,3 +29,23 @@ class MaxStack(objecct):
         for a in arr[::-1]:
             self.push(a[0])
         return curr[0]
+
+stack = MaxStack()
+print stack.push(5)
+print stack.push(1)
+print stack.push(5)
+print stack.top() # -> 5
+print stack.popMax() # -> 5
+print stack.top() # -> 1
+print stack.peekMax() # -> 5
+print stack.pop() # -> 1
+print stack.top() # -> 5
+
+print stack.push(2)
+print stack.push(3)
+print stack.push(4)
+print stack.peekMax()
+print stack.popMax()
+print stack.peekMax()
+print stack.pop()
+print stack.top()

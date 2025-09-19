@@ -122,6 +122,8 @@ class Player(object):
         else:
             raise ValueError('wrong dir')
 
-p2 = Player('up')
-print p2.dir
-p1 = Player('upppp')
+# p2 = Player('up')
+# print p2.dir
+# p1 = Player('upppp')
+
+print [m for m in None]

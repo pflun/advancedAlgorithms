@@ -15,3 +15,5 @@ class Solution(object):
 
 test = Solution()
 print test.containsNearbyDuplicate([-2,1,-3,4,-1,2,1,-5, -5,4], 3)
+
+# Optimal: dic + two sum

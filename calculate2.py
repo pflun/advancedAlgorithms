@@ -73,3 +73,4 @@ print test.calculate(' 3+5 * 2')
 # expect: 13, python 2 bug, -3/2 = -2 but 3/2 = 1
 print test.calculate2("14-3/2")
 print test.calculate2("3+2*2")
+print test.calculate2("333+2*2")

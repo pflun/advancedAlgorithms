@@ -1,5 +1,31 @@
 import string
 class Solution(object):
+    def findLadders2(self, beginWord, endWord, wordList):
+        aToz = string.ascii_lowercase
+        res = []
+        wordList = set(wordList)
+        # current word: [path_to_current]
+        transfer = {beginWord: [[beginWord]]}
+
+        while transfer:
+            tmp = {}
+            for w in transfer.keys():
+                if w == endWord:
+                    for r in transfer[w]:
+                        res.append(r)
+                else:
+                    for i in range(len(w)):
+                        for c in aToz:
+                            new_word = w[:i] + c + w[i + 1:]
+                            if new_word in wordList:
+                                tmp[new_word] = tmp.get(new_word, []) + [j + [new_word] for j in transfer[w]]
+
+            for w in set(tmp.keys()):
+                wordList.remove(w)
+            transfer = tmp
+
+        return res
+
     def findLadders(self, beginWord, endWord, wordList):
         if endWord not in wordList:
             return []
@@ -30,4 +56,4 @@ class Solution(object):
         return self.res
 
 test = Solution()
-print test.findLadders("hit", "cog", ["hot","dot","dog","lot","log","cog"])
+print test.findLadders2("hit", "cog", ["hot","dot","dog","lot","log","cog"])

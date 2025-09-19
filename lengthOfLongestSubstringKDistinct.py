@@ -1,6 +1,6 @@
 class Solution(object):
     def lengthOfLongestSubstringKDistinct(self, s, k):
-        res = k
+        res = 0
         dic = {}
         left = 0
         right = 0
@@ -12,8 +12,7 @@ class Solution(object):
                     dic.pop(s[left])
                 left += 1
 
-            if len(dic) == k:
-                res = max(res, right - left + 1)
+            res = max(res, right - left + 1)
 
             right += 1
 
@@ -38,6 +37,8 @@ class Solution(object):
 
 test = Solution()
 print test.lengthOfLongestSubstringKDistinct("eceba", 2)
+print test.lengthOfLongestSubstringKDistinct("aa", 1)
+print test.lengthOfLongestSubstringKDistinct("aa", 3)
 print test.lengthOfLongestSubstringKDistinct("cabbacc", 1)
 print test.lengthOfLongestSubstringKDistinct("cabbacc", 2)
 print test.lengthOfLongestSubstringKDistinct("cabbacc", 3)
