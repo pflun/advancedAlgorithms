@@ -9,7 +9,7 @@ class Solution(object):
         for i in t:
             dicT[i] = dicT.get(i, 0) + 1
 
-        while r <= len(s) - 1:
+        while r < len(s):
             # Find valid window
             dicS[s[r]] = dicS.get(s[r], 0) + 1
             r += 1

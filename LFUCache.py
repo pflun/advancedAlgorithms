@@ -42,43 +42,58 @@ class LFUCache2(object):
         return
 
 
-# 再看了一遍好像下面写错了，具体看https://www.youtube.com/watch?v=MCTN3MM8vHA
-from collections import OrderedDict
+from collections import defaultdict,OrderedDict
 class LFUCache(object):
     def __init__(self, capacity):
-        self.fq = OrderedDict()
-        self.dic = {}
-        self.remain = capacity
+        self.capacity = capacity
+        # Maps key -> (value, frequency)
+        self.key_map = {}
+        # Maps frequency -> OrderedDict of keys
+        self.freq_map = defaultdict(OrderedDict)
+        self.min_freq = 0
 
     def get(self, key):
-        if key in self.dic:
-            # 从fq拿出来再放进去，frequency ＋ 1
-            fq = self.fq[key]
-            self.fq.pop(key)
-            self.fq[key] = fq + 1
-            return self.dic[key]
-        else:
+        if key not in self.key_map:
             return -1
 
+        value, freq = self.key_map[key]
+        self._update_freq(key, value, freq)
+        return value
+
     def put(self, key, value):
-        # 更新fq的顺序，fq ＋ 1，value加到dic
-        if key in self.dic:
-            self.dic[key] = value
-            fq = self.fq[key]
-            self.fq.pop(key)
-            self.fq[key] = fq + 1
-        else:
-            # fq ＝ 1，remain －1
-            if self.remain > 0:
-                self.remain -= 1
-                self.dic[key] = value
-                self.fq[key] = 1
-            # fq最后一个pop，同时把它从dic里pop
-            else:
-                lastKey, lastVal = self.fq.popitem(last=False)
-                self.dic.pop(lastKey)
-                self.dic[key] = value
-                self.fq[key] = 1
+        if self.capacity == 0:
+            return
+
+        # If key exists, just update its value and bump its frequency
+        if key in self.key_map:
+            _, freq = self.key_map[key]
+            self._update_freq(key, value, freq)
+            return
+
+        # If capacity is full, evict the LFU (and LRU if tied) item
+        if len(self.key_map) == self.capacity:
+            # 1. Find the OrderedDict of the minimum frequency
+            # 2. Pop the first item (Least Recently Used) from that OrderedDict
+            evict_key, _ = self.freq_map[self.min_freq].popitem(last=False)
+            del self.key_map[evict_key]
+
+        # Insert the new key
+        self.key_map[key] = (value, 1)
+        self.freq_map[1][key] = None # Value in OrderedDict doesn't matter, just the key
+        self.min_freq = 1
+
+    def _update_freq(self, key, value, freq):
+        """Helper method to promote a key to the next frequency bucket."""
+        # Remove key from its current frequency bucket
+        del self.freq_map[freq][key]
+
+        # If we just emptied the bucket representing the min_freq, increment min_freq
+        if freq == self.min_freq and not self.freq_map[freq]:
+            self.min_freq += 1
+
+        # Update mapping and add to the new frequency bucket
+        self.key_map[key] = (value, freq + 1)
+        self.freq_map[freq + 1][key] = None
 
 
 # Your LFUCache object will be instantiated and called as such:
