@@ -24,7 +24,6 @@ class Solution(object):
         return cnt
 
     def islandPerimeter(self, grid):
-        res = 0
         island = 0
         neighbor = 0
 

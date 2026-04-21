@@ -32,6 +32,7 @@ class Solution(object):
         return l
 
     # 找到first element that A[i] > x
+    # Strictly greater, so upper bound of x is more like l - 1
     def upper_bound(self, arr, x):
         l = 0
         r = len(arr)
@@ -49,3 +50,4 @@ print test.lower_bound([1, 2, 2, 2, 4, 4, 5], 3)
 print test.upper_bound([1, 2, 2, 2, 4, 4, 5], 2)
 # return 7 (len arr) 因为arr内没有任何idx的值严格大于5
 print test.upper_bound([1, 2, 2, 2, 4, 4, 5], 5)
+print test.upper_bound([5, 7, 7, 8, 8, 10], 8)
