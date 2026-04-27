@@ -41,6 +41,26 @@ class Solution(object):
                 dic[preSum[i] % 6] = i
         return False
 
+    # Solution 3 is more organized
+    def checkSubarraySum3(self, nums, k):
+        # [5, 1, 5, 5, 0]
+        preSum = [nums[0] % k]
+        for i in range(1, len(nums)):
+            preSum.append((preSum[-1] + nums[i]) % k)
+        # Base case to solve [23,2,4,6,6], 7 which 23,2,4,6 = 35
+        dic = {0: -1}
+        for i in range(len(nums)):
+            if preSum[i] in dic:
+                if i - dic[preSum[i]] > 1:
+                    return True
+            else:
+                dic[preSum[i]] = i
+        return False
+
 test = Solution()
 print test.checkSubarraySum([21, 7, 7, 4, 2], 6)
 print test.checkSubarraySum2([23,2,4,6,7], 6)
+print test.checkSubarraySum2([23,2,4,6,6], 6)
+print test.checkSubarraySum3([23,2,4,6,7], 6)
+print test.checkSubarraySum3([23,2,6,4,7], 6)
+print test.checkSubarraySum3([23,2,4,6,6], 7)
