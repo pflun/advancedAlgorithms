@@ -8,6 +8,17 @@ class TreeNode(object):
         self.right = None
 
 class Solution1(object):
+    # DFS
+    def rangeSumBST(self, root, low, high):
+        if not root:
+            return 0
+        if root.val < low:
+            return self.rangeSumBST(root.right, low, high)
+        elif root.val > high:
+            return self.rangeSumBST(root.left, low, high)
+        elif low <= root.val <= high:
+            return self.rangeSumBST(root.left, low, high) + root.val + self.rangeSumBST(root.right, low, high)
+
     # BFS
     def rangeSumBST(self, root, L, R):
         queue = [root]

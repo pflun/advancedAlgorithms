@@ -24,6 +24,13 @@ class Solution:
         if fa_master != fa_branch:
             self.dic[fa_branch] = fa_master
 
+    # Path Compression
+    # def find(self, x):
+    #     if x != self.dic[x]:
+    #         # 递归去寻找真正的老大，并把当前节点的 parent 直接设为老大
+    #         self.dic[x] = self.find(self.dic[x])
+    #     return self.dic[x]
+
 test = Solution()
 test.build('A', 'C')
 test.build('B', 'C')
