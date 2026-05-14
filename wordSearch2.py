@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # https://leetcode.com/problems/word-search-ii/discuss/59790/Python-dfs-solution-(directly-use-Trie-implemented).
+import collections
 class TrieNode():
     def __init__(self):
         self.children = collections.defaultdict(TrieNode)

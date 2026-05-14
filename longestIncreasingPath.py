@@ -35,18 +35,31 @@ class Solution(object):
         self.res = 0
         self.dir = [[0, 1], [1, 0], [0, -1], [-1, 0]]
 
-        def dfs(matrix, i, j, steps, prev):
+        memo = {}
+
+        # 返回“从 (i, j) 往下走的最长步数”
+        def dfs(i, j, prev):
             if i < 0 or j < 0 or i == len(matrix) or j == len(matrix[0]) or matrix[i][j] <= prev:
-                return
-            self.res = max(self.res, steps)
+                return 0
+            
+            # 查缓存：如果这个格子之前算过了，直接交答案！
+            if (i, j) in memo:
+                return memo[(i, j)]
+            
+            max_neighbor_steps = 0
             for d in self.dir:
                 curry = i + d[0]
                 currx = j + d[1]
-                dfs(matrix, curry, currx, steps + 1, matrix[i][j])
+                # 递归去问周围四个邻居，它们能走多远？取最大值
+                max_neighbor_steps = max(max_neighbor_steps, dfs(curry, currx, matrix[i][j]))
+            
+            # 存缓存：当前格子的最长路径 = 1 (格子自己) + 邻居能走的最远步数
+            memo[(i, j)] = 1 + max_neighbor_steps
+            return memo[(i, j)]
 
         for i in range(len(matrix)):
             for j in range(len(matrix[0])):
-                dfs(matrix, i, j, 1, float('-inf'))
+                self.res = max(self.res, dfs(i, j, float('-inf')))
 
         return self.res
 

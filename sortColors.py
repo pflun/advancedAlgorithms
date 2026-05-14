@@ -28,15 +28,20 @@ class Solution(object):
 
     def sortColors2(self, nums):
         # 两次partition
+        # 第一次partition把后面的0换到前面，第二次把后面的1换到前面
+        # 找第一个不是 0 的位置 i
         for i in range(len(nums)):
             if nums[i] != 0:
                 break
 
+        # 从 i 开始往后扫，只要遇到 0，就把它和位置 i 的元素交换，同时 i 往后挪一格
+        # 这段代码跑完后，数组变成了这样：[0, 0, ..., 0, 乱七八糟的 1 和 2]
         for j in range(i, len(nums)):
             if nums[j] == 0:
                 nums[i], nums[j] = nums[j], nums[i]
                 i += 1
 
+        # 找第一个是 2 的位置 i
         for i in range(len(nums)):
             if nums[i] != 0 and nums[i] != 1:
                 break
