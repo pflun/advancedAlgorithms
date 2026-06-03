@@ -13,11 +13,11 @@ class Solution(object):
             while j < k:
                 if nums[i] + nums[j] + nums[k] == target:
                     return target
-                elif nums[i] + nums[j] + nums[k] > 0:
+                elif nums[i] + nums[j] + nums[k] > target:
                     if abs(nums[i] + nums[j] + nums[k] - target) < abs(res - target):
                         res = nums[i] + nums[j] + nums[k]
                     k -= 1
-                elif nums[i] + nums[j] + nums[k] < 0:
+                elif nums[i] + nums[j] + nums[k] < target:
                     if abs(nums[i] + nums[j] + nums[k] - target) < abs(res - target):
                         res = nums[i] + nums[j] + nums[k]
                     j += 1
@@ -26,3 +26,4 @@ class Solution(object):
 
 test = Solution()
 print test.threeSumClosest([-1, 2, 1, -4], 1)
+print test.threeSumClosest([0,0,0], 1)
