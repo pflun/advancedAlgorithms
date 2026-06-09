@@ -55,7 +55,7 @@ class Solution(object):
             weeklyAcc = 0.0
             weeklyDaysCount = 0
             
-            # 使用 xrange 遍历完整的连续自然天，包括 missing days
+            # 遍历完整的连续自然天，包括 missing days
             for day in range(minDay, maxDay + 1):
                 # 1. 检查昨天 (day - 1) 是否有更改申请，如果有，今天就生效新的 cadence
                 if (day - 1) in cadenceHistory:

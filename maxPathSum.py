@@ -8,15 +8,12 @@ class TreeNode(object):
         self.right = None
 
 class Solution(object):
-    # bug
     def maxPathSum2(self, root):
         self.res = float('-inf')
 
         def helper(node):
-            if not node.left and not node.right:
-                # this handle corner case where only 1 root
-                self.res = max(self.res, node.val)
-                return node.val
+            if not node:
+                return 0
             left = 0
             right = 0
             if node.left:
