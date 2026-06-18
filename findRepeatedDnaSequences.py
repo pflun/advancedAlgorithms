@@ -22,14 +22,14 @@ class Solution(object):
         return list(res)
 
     def findRepeatedDnaSequences(self, s):
-        r, record = set(), set()
-        for i in xrange(len(s) - 9):
-            substring = s[i:i + 10]
-            if substring in record:
-                r.add(substring)
+        res, visited = set(), set()
+        for i in range(len(s) - 9):
+            curr = s[i:i + 10]
+            if curr in visited:
+                res.add(curr)
             else:
-                record.add(substring)
-        return list(r)
+                visited.add(curr)
+        return list(res)
 
 test = Solution()
 print test.findRepeatedDnaSequences2("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT")

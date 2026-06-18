@@ -10,13 +10,11 @@ class Solution(object):
         result = []
 
         for i in range(m):
-            # p_visited[i][0] = True
-            # a_visited[i][n-1] = True
+            # dfs pacific visited
             self.dfs(matrix, i, 0, p_visited, m, n)
+            # dfs atlantic visited
             self.dfs(matrix, i, n - 1, a_visited, m, n)
         for j in range(n):
-            # p_visited[0][j] = True
-            # a_visited[m-1][j] = True
             self.dfs(matrix, 0, j, p_visited, m, n)
             self.dfs(matrix, m - 1, j, a_visited, m, n)
 
