@@ -8,6 +8,10 @@ class Solution(object):
         length = len(nums) - 1
         res = []
         for i in range(length):
+            # IMPORTANT: skip duplicates so later we don't need to "if tmp not in res:"
+            # if i > 0 and nums[i] == nums[i - 1]:
+            #     continue
+            # Similarly for j & k, skip duplicates
             j = i + 1
             k = length
             tmp = []

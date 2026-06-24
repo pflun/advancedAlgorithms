@@ -19,28 +19,6 @@
 # 4. 在freq中频率为1的list末尾加上7
 # 5. 在iter中保存7在freq中频率为1的list中的位置
 # 6. minFreq重置为1
-class LFUCache2(object):
-
-    def __init__(self, capacity):
-        self.capacity = capacity
-        # 保存当前最小频率
-        self.minFreq = 0
-        # 5 -> 1, 4 -> 1
-        self.m = {}
-        # 1 -> [5, 4]
-        self.freq = {}
-        # 4 -> list.begin() + 1
-        # 5 -> list.begin()
-        self.iter = {}
-
-    def get(self, key):
-        if not self.m[key]:
-            return -1
-
-
-    def put(self, key, value):
-        return
-
 
 from collections import defaultdict,OrderedDict
 class LFUCache(object):
