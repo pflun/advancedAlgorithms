@@ -3,10 +3,11 @@
 class Solution(object):
     def knightDialer(self, N):
         dp = [[1 for _ in range(10)] for _ in range(N)]
-        dp[0][4] = 0
+        dp[0][4] = 0 # Index 4 对应键盘数字 5（因为 5 是死角，跳不到别人那里，别人也跳不到它，所以代码里 dp[k][4] = 0
 
         for k in range(1, N):
             # dp 0位置对应键盘上数字1，因为数字1可以从数字8和6跳过来，所以dp 1 = dp (7 + 5) 同理数字8对应dp7，数字6对应dp5
+            # 没有直接把数组下标 0-9 对齐到键盘的数字 0-9，而是做了一个位移映射，index = 数字 - 1，dp[k][4]其实是数字5
             dp[k][0] = dp[k - 1][7] + dp[k - 1][5]
             dp[k][1] = dp[k - 1][6] + dp[k - 1][8]
             dp[k][2] = dp[k - 1][3] + dp[k - 1][7]

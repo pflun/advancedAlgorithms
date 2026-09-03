@@ -65,9 +65,10 @@ class Solution(object):
         return res
 
     # 有一点test case 没过，分奇偶两边扫
+    # Improve: 与其isPalindrome，不如只比较两端字符，O(1) per step
     def longestPalindrome2(self, s):
         # write your code here
-        self.res = ''
+        self.res = s[0]
         for i in range(len(s)):
             # odd
             offset = 1
@@ -75,6 +76,8 @@ class Solution(object):
                 if self.isPalindrome(s[i - offset:i + offset + 1]):
                     if len(self.res) < len(s[i - offset:i + offset + 1]):
                         self.res = s[i - offset:i + offset + 1]
+                else:
+                    break
                 offset += 1
 
             # even
@@ -83,6 +86,8 @@ class Solution(object):
                 if self.isPalindrome(s[i - offset:i + offset]):
                     if len(self.res) < len(s[i - offset:i + offset]):
                         self.res = s[i - offset:i + offset]
+                else:
+                    break
                 offset += 1
 
         return self.res

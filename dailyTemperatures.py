@@ -17,6 +17,10 @@ class Solution(object):
         return res
 
     # 单调栈：维护递减栈的index
+    # [73, 74, 75, 71, 69, 72, 76, 73]
+    # 开始74的时候，栈里存73的index，所以res[index_73] = 1（index_74 - index_73）
+    # 开始72的时候，栈里存75 71 69的index，算71 69两天，栈里还剩75
+    # 76的时候，开始算75相差多少天
     def dailyTemperatures2(self, temperatures):
         res = [0] * len(temperatures)
         stack = []

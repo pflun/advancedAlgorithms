@@ -1,13 +1,5 @@
 class Solution(object):
-    # brutal force
     def sortedSquares(self, A):
-        res = []
-        for a in A:
-            a *= a
-            res.append(a)
-        return sorted(res)
-
-    def sortedSquares2(self, A):
         l = 0
         r = len(A) - 1
         res = []

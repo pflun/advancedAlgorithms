@@ -18,7 +18,7 @@ class Solution:
                     # max(不放i, 放i则需减去i所占的空间)
                     dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - A[i - 1]] + V[i - 1])
                 else:
-                    # 不取
+                    # 不取（放不下A[i - 1]）
                     dp[i][j] = dp[i - 1][j]
 
         print dp
