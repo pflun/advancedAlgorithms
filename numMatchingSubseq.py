@@ -6,7 +6,10 @@ class Solution(object):
         dic = {}
         res = 0
         for i in range(len(S)):
-            dic[S[i]] = dic.get(S[i], []) + [i]
+            if S[i] in dic:
+                dic[S[i]].append(i)
+            else:
+                dic[S[i]] = [i]
 
         # binary search找第一个比目标大的数，没有就返回None
         def search(idx, c):
@@ -32,6 +35,7 @@ class Solution(object):
                         break
                 else:
                     break
+                # 走到了这个 w 的最后
                 if i == len(w) - 1:
                     res += 1
 

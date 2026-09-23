@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # """
 # This is Sea's API interface.
 # You should not implement it, or speculate about its implementation
@@ -10,10 +11,10 @@
 #        :rtype bool
 #        """
 #
-# class Point(object):
-# 	def __init__(self, x, y):
-# 		self.x = x
-# 		self.y = y
+class Point(object):
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
 
 class Solution(object):
     def countShips(self, sea, topRight, bottomLeft):
@@ -30,4 +31,5 @@ class Solution(object):
             return 1
         midX = (topRight.x + bottomLeft.x) / 2
         midY = (topRight.y + bottomLeft.y) / 2
+        # 左下 + 左上 + 右下 + 右上
         return self.countShips(sea, Point(midX, midY), bottomLeft) + self.countShips(sea, Point(midX, topRight.y), Point(bottomLeft.x, midY+1)) + self.countShips(sea, Point(topRight.x, midY), Point(midX+1, bottomLeft.y)) + self.countShips(sea, topRight, Point(midX+1, midY+1))
